@@ -1,0 +1,13 @@
+.grab {
+  cursor: grab;
+}
+
+body.is-dragging {
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+
+  .grab {
+    cursor: -webkit-grabbing;
+    cursor: grabbing;
+  }
+}

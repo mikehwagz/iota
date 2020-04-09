@@ -1,0 +1,9 @@
+.letter {
+  width: 66px;
+  height: 66px;
+
+  @media (query('s')) {
+    width: 105px;
+    height: 105px;
+  }
+}

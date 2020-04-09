@@ -1,7 +1,7 @@
 {
-  "name": "sane-eleventy",
-  "version": "0.0.5",
-  "repository": "https://github.com/selfawarestudio/sane-eleventy.git",
+  "name": "iota",
+  "version": "0.0.1",
+  "repository": "https://github.com/mikehwagz/iota.git",
   "author": "mikehwagz <mike@selfaware.studio>",
   "license": "NONE",
   "private": true,
