@@ -16,6 +16,11 @@ body {
   height: 100%;
 }
 
+body {
+  overscroll-behavior: none;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
 ::selection {
   background-color: rgba(0, 0, 0, 0.1);
 }
@@ -47,6 +52,44 @@ $nav-height: 66px;
   bottom: 66px;
 }
 
+.vh100-nav {
+  height: calc(100vh - 66px);
+}
+
+.vh100-nav--2x {
+  height: calc((100vh - 66px) * 2);
+}
+
+.mb-nav {
+  padding-bottom: 66px;
+}
+
 .is-hidden {
   @include hidden;
+}
+
+.f18-32 {
+  @include fluid(font-size, 650px, 1440px, 18px, 32px);
+}
+
+.portrait {
+  display: none;
+
+  @media (orientation: portrait) {
+    display: block;
+  }
+}
+
+.landscape {
+  display: none;
+
+  @media (orientation: landscape) {
+    display: block;
+  }
+}
+
+.rte {
+  p:not(:first-child) {
+    text-indent: 7%;
+  }
 }

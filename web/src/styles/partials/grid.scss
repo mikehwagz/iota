@@ -1,0 +1,29 @@
+$column-count: 16;
+// $gutter: 24 / 1440 * 100vw;
+$gutter: 2rem;
+
+.row {
+  display: grid;
+  grid-template-columns: repeat($column-count, 1fr);
+  column-gap: $gutter;
+}
+
+[class*='col-'] {
+  grid-column-end: span #{$column-count};
+}
+
+@for $i from 1 through $column-count {
+  .col-#{$i} {
+    grid-column-end: span #{$i};
+  }
+}
+
+@each $prefix, $query in $media-queries {
+  @media ($query) {
+    @for $i from 1 through $column-count {
+      .#{$prefix}\:col-#{$i} {
+        grid-column-end: span #{$i};
+      }
+    }
+  }
+}

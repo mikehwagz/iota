@@ -10,7 +10,9 @@ $colors: (
 
 $font-sizes: (
   '0': 0rem,
+  '18': 1.8rem,
   '24': 2.4rem,
+  '30': 3rem,
   '35': 3.5rem,
   '36': 3.6rem,
   '45': 4.5rem,
@@ -23,10 +25,14 @@ $line-heights: (
   '096': 0.964,
   '111': 1.111,
   '120': 1.2,
+  '136': 1.36,
+  '140': 1.4,
   '154': 1.54,
 );
 
 $letter-spacings: (
+  '0': 0,
+  'n01em': -0.01em,
   'n025em': -0.025em,
 );
 
@@ -45,9 +51,9 @@ $aspect-ratios: (
     1,
     1,
   ),
-  '5x4': (
-    5,
+  '4x5': (
     4,
+    5,
   ),
   '16x9': (
     16,
@@ -59,6 +65,11 @@ $default-border: 2px solid $black;
 
 $border-styles: (
   'solid': solid,
+);
+
+$border-radiuses: (
+  '50': 50%,
+  '30': 30px,
 );
 
 $border-widths: (
