@@ -6,4 +6,41 @@
     width: 105px;
     height: 105px;
   }
+
+  &::before {
+    content: '';
+    display: block;
+    width: 2px;
+    height: 2px;
+    background-color: $black;
+    position: absolute;
+  }
+
+  &--tl {
+    &::before {
+      top: -2px;
+      left: -2px;
+    }
+  }
+
+  &--tr {
+    &::before {
+      top: -2px;
+      right: -2px;
+    }
+  }
+
+  &--bl {
+    &::before {
+      bottom: -2px;
+      left: -2px;
+    }
+  }
+
+  &--br {
+    &::before {
+      bottom: -2px;
+      right: -2px;
+    }
+  }
 }

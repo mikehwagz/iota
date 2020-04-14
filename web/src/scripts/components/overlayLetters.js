@@ -20,8 +20,7 @@ export default component((node, ctx) => {
   })
 
   ctx.on('dragEnd', () => {
-    tx = 0
-    ty = 0
+    tx = ty = 0
   })
 
   ctx.on('tick', ({ ease }) => {

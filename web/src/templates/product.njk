@@ -7,12 +7,13 @@ title: Product
     <div class="rel x y">
 
       <div class="overlay abs fill z1" data-component="overlay">
+
+        {% include 'overlayBorders.njk' %}
         
         <div class="x y oh wct" data-component="overlayMask">
-          {# MASK START #}
-
           <div class="x y">
-            <div class="mb-nav" data-component="smooth">
+          {# MASK START #}
+            <div class="mb-nav bg-white wct" data-component="smooth">
               <section class="x vh100-nav--2x bg-white wct" data-sticky-container>
                 <div class="rel x vh100-nav">
                   <div class="x y" data-sticky>
@@ -44,12 +45,16 @@ title: Product
               </section>
 
               
-              <section class="row bg-white" data-sticky-container>
+              <section class="row" data-sticky-container>
                 <div class="col-8">
                   {# <img src="/assets/demo-5.jpg" class="db x vh100-nav o-cover">
                   <img src="/assets/demo-4.jpg" class="db x vh100-nav o-cover"> #}
-                  <img src="/assets/demo-6.jpg" class="db x vh100-nav o-cover">
-                  <img src="/assets/demo-9.jpg" class="db x vh100-nav o-cover">
+                  <div class="x vh100-nav oh">
+                    <img src="/assets/demo-6.jpg" class="db x y o-cover">
+                  </div>
+                  <div class="x vh100-nav oh">
+                    <img src="/assets/demo-9.jpg" class="db x y o-cover">
+                  </div>
                 </div>
                 <div class="col-7">
                   <div class="vh100-nav df aic" data-sticky>
@@ -66,7 +71,7 @@ title: Product
                       </ul>
                       <div class="df mb60">
                         <p class="serif mr30">$30</p>
-                        <button class="serif ba br30 ph15">Add to Bag</button>
+                        <button class="btn serif ba br30 ph15">Add to Bag</button>
                       </div>
                       {# <ul class="f24 serif lsn01em lh154">
                         <li>40 pages</li>
@@ -84,7 +89,7 @@ title: Product
                 </div>
               </section>
 
-              <section class="row bg-white" data-sticky-container>
+              <section class="row" data-sticky-container>
                 <div class="col-8">
                   <img src="/assets/demo-5.jpg" class="db x vh100-nav o-cover" data-sticky>
                 </div>
@@ -118,19 +123,48 @@ title: Product
                   </div>
                 </div>
               </section>
+
+              <section class="pv200">
+                <div class="row">
+                  <div class="col-1"></div>
+                  <div class="col-4">
+                    <div class="r r--4x5">
+                      <div class="ro">
+                        <img src="/assets/demo-3.jpg" class="x">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-1"></div>
+                  <div class="col-6">
+                    <div class="r r--4x5">
+                      <div class="ro">
+                        <img src="/assets/demo-2.jpg" class="x">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-1"></div>
+                  <div class="col-3 ase">
+                    <div class="r r--4x5 oh">
+                      <div class="ro">
+                        <img src="/assets/demo-4.jpg" class="x">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
               
-              <section class="bg-white pt80">
-                <div class="r r--4x5">
-                  <div class="ro">
+              <section class="pt80">
+                <div class="r r--4x5 oh">
+                  <div class="ro wct">
                     <img src="/assets/demo-8.jpg" class="x">
                   </div>
                 </div>
               </section>
 
             </div>
-          </div>
-
+          
           {# MASK END #}
+          </div>
         </div>
 
         {% include 'overlayLetters.njk' %}

@@ -1,0 +1,27 @@
+.border {
+  &--t,
+  &--b {
+    height: 2px;
+  }
+
+  &--l,
+  &--r {
+    width: 2px;
+  }
+
+  &--t {
+    top: -2px;
+  }
+
+  &--b {
+    bottom: -2px;
+  }
+
+  &--l {
+    left: -2px;
+  }
+
+  &--r {
+    right: -2px;
+  }
+}

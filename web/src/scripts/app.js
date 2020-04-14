@@ -4,6 +4,7 @@ import { size } from '@selfaware/martha'
 import overlay from '@/components/overlay'
 import overlayMask from '@/components/overlayMask'
 import overlayLetters from '@/components/overlayLetters'
+import overlayBorders from '@/components/overlayBorders'
 import secrets from '@/components/secrets'
 import flag from '@/components/flag'
 import video from '@/components/video'
@@ -13,6 +14,7 @@ const components = {
   overlay,
   overlayMask,
   overlayLetters,
+  overlayBorders,
   secrets,
   flag,
   video,
