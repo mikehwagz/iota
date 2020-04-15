@@ -1,5 +1,6 @@
 import { component } from 'picoapp'
-import { has, remove, lerp, clamp, round } from '@selfaware/martha'
+import { clamp } from '@selfaware/martha'
+import rLerp from '@/util/rLerp'
 
 export default component((node, ctx) => {
   const letters = Array.from(node.children)
@@ -26,15 +27,8 @@ export default component((node, ctx) => {
   ctx.on('tick', ({ ease }) => {
     if (i < 0) return
 
-    cx = round(lerp(cx, tx, ease), 100)
-    let dx = cx - tx
-    if (dx < 0) dx *= -1
-    if (dx < 0.001) cx = tx
-
-    cy = round(lerp(cy, ty, ease), 100)
-    let dy = cy - ty
-    if (dy < 0) dy *= -1
-    if (dy < 0.001) cy = ty
+    cx = rLerp(cx, tx, ease, 100, 0.001)
+    cy = rLerp(cy, ty, ease, 100, 0.001)
 
     let translateMap = [
       [2, 1, 3],
