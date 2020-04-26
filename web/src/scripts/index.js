@@ -1,27 +1,16 @@
-import app from '@/app'
-import router from '@/router'
-import gsap from 'gsap'
-import { on, size } from '@selfaware/martha'
+import Highway from '@dogstudio/highway'
 
-// broadcast resize event
-on(window, 'resize', resize)
+// renderers
+import Base from '@/renderers/Base'
 
-// setup render loop
-gsap.ticker.add(tick)
+// transitions
+import Instant from '@/transitions/Instant'
 
-// mount picoapp
-app.mount()
-resize()
-
-router.on('NAVIGATE_IN', () => {
-  app.unmount()
-  app.mount()
+const H = new Highway.Core({
+  renderers: {
+    default: Base,
+  },
+  transitions: {
+    default: Instant,
+  },
 })
-
-function resize() {
-  app.emit('resize', size())
-}
-
-function tick() {
-  app.emit('tick')
-}

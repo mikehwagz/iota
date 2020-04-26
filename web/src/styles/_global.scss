@@ -19,6 +19,7 @@ body {
 body {
   overscroll-behavior: none;
   -ms-overflow-style: -ms-autohiding-scrollbar;
+  transition: opacity 1s $ease-out-quart;
 }
 
 ::selection {
@@ -37,6 +38,10 @@ h6 {
 a {
   color: currentColor;
   text-decoration: none;
+}
+
+[data-router-view] {
+  @include hidden;
 }
 
 $nav-height: 66px;

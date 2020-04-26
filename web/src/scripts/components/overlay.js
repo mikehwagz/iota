@@ -1,5 +1,5 @@
 import { component } from 'picoapp'
-import createPointerEvents from '@/lib/simple-input-events'
+import createPointerEvents from '@/lib/pointerEvents'
 import { has, add, remove, index } from '@selfaware/martha'
 
 export default component((node, ctx) => {

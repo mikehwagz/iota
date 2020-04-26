@@ -16,9 +16,11 @@
     "start:eleventy": "eleventy --quiet --watch"
   },
   "dependencies": {
-    "@selfaware/martha": "^0.0.3",
+    "@dogstudio/highway": "^2.2.1",
+    "@selfaware/martha": "^0.0.5",
     "@selfaware/wool": "^1.0.3",
     "choozy": "^0.0.6",
+    "fontfaceobserver": "^2.1.0",
     "gsap": "^3.2.5",
     "mitt": "^1.2.0",
     "picoapp": "^3.6.1"
@@ -34,6 +36,7 @@
     "@sanity/image-url": "^0.140.17",
     "autoprefixer": "^9.7.4",
     "babel-loader": "^8.0.6",
+    "babel-plugin-transform-async-to-promises": "^0.8.15",
     "browser-sync": "^2.26.7",
     "cross-env": "^6.0.3",
     "css-loader": "^3.4.2",
