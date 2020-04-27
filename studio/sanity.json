@@ -1,10 +1,10 @@
 {
   "root": true,
   "project": {
-    "name": "sane-eleventy"
+    "name": "iota"
   },
   "api": {
-    "projectId": "0v76nywm",
+    "projectId": "2hxdt5la",
     "dataset": "production"
   },
   "plugins": [
@@ -14,7 +14,8 @@
     "@sanity/default-login",
     "@sanity/desk-tool",
     "@sanity/dashboard",
-    "dashboard-widget-netlify"
+    "dashboard-widget-netlify",
+    "tabs"
   ],
   "env": {
     "development": {

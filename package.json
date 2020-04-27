@@ -8,6 +8,7 @@
   "scripts": {
     "start:studio": "yarn workspace studio start",
     "test:studio": "yarn workspace studio test",
+    "upgrade:studio": "yarn workspace studio upgrade",
     "deploy:studio": "yarn workspace studio deploy",
     "build": "yarn workspace web build",
     "start": "yarn workspace web start",

@@ -7,12 +7,16 @@ export default () =>
     .title('Content')
     .items([
       S.listItem()
-        .title('Configuration')
+        .title('Global Settings')
         .icon(() => <Emoji style={{ fontSize: 30 }} text="🌎" />)
         .child(
           S.editor()
-            .title('Config')
+            .title('Global Settings')
             .schemaType('config')
             .documentId('config'),
         ),
+      S.listItem()
+        .title('Products')
+        .icon(() => <Emoji style={{ fontSize: 30 }} text="📕" />)
+        .child(S.documentTypeList('product').title('Products')),
     ])

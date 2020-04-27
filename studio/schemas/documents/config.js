@@ -1,6 +1,7 @@
 export default {
-  title: 'Global Configuration',
   name: 'config',
+  title: 'Global Settings',
+  __experimental_actions: ['update', 'publish'],
   type: 'document',
   fields: [
     {
