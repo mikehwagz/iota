@@ -17,10 +17,12 @@ const statusReturn = (code, body) => {
 const client = sanityClient({
   projectId: '2hxdt5la',
   dataset: 'production',
-  useCdn: true,
+  token:
+    'skMlIAAljLrN5aOf2VSpiZTtwaUlerfWrkBndNwTEeeYVI1NQbArb4R1IQ4vkcqn3sKeZrl1tXQXi5HzG',
+  useCdn: false,
 })
 
-export const handler = async (event) => {
+exports.handler = async (event) => {
   if (event.httpMethod !== 'POST' || !event.body) {
     return statusReturn(400, '')
   }
