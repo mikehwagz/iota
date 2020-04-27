@@ -33,6 +33,6 @@
     }
   },
   "dependencies": {
-    "node-fetch": "^2.6.0"
+    "@sanity/client": "^1.149.7"
   }
 }
