@@ -14,3 +14,7 @@ const H = new Highway.Core({
     default: Instant,
   },
 })
+
+fetch('/.netlify/functions/hello-world')
+  .then((res) => res.json())
+  .then(console.log)
