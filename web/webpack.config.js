@@ -43,7 +43,6 @@ module.exports = {
               '@babel/plugin-proposal-class-properties',
               '@babel/plugin-proposal-object-rest-spread',
               '@babel/plugin-transform-template-literals',
-              'babel-plugin-transform-async-to-promises',
             ],
           },
         },

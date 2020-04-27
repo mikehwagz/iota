@@ -36,7 +36,6 @@
     "@sanity/image-url": "^0.140.17",
     "autoprefixer": "^9.7.4",
     "babel-loader": "^8.0.6",
-    "babel-plugin-transform-async-to-promises": "^0.8.15",
     "browser-sync": "^2.26.7",
     "cross-env": "^6.0.3",
     "css-loader": "^3.4.2",
@@ -62,6 +61,5 @@
     "webpack-fix-style-only-entries": "^0.4.0",
     "webpack-manifest-plugin": "^2.2.0",
     "workerize-loader": "^1.1.0"
-  },
-  "sideEffects": false
+  }
 }
