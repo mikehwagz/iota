@@ -1,5 +1,7 @@
 import { component } from 'picoapp'
-import { add, round, lerp, clamp } from '@selfaware/martha'
+import { add, rect, round, lerp, clamp } from '@selfaware/martha'
+import rLerp from '@/util/rLerp'
+import { qsa } from '@/util'
 
 export default component((node, ctx) => {
   let sh = null
@@ -8,15 +10,15 @@ export default component((node, ctx) => {
   let ease = 0.15
   let cache = []
 
-  let stickyEls = Array.from(node.querySelectorAll('[data-sticky]'))
-  let prlxEls = Array.from(node.querySelectorAll('[data-prlx]'))
+  let stickyEls = qsa('[data-sticky]', node)
+  let prlxEls = qsa('[data-prlx]', node)
 
   add(node, 'fix', 'top', 'fill-x', 'oh')
   ctx.on('resize', resize)
   ctx.on('tick', update)
 
   function resize() {
-    sh = node.getBoundingClientRect().height
+    sh = rect(node).height
     document.body.style.height = sh + 'px'
 
     node.style.transform = translateY(0)
@@ -27,10 +29,10 @@ export default component((node, ctx) => {
         return {
           el,
           type: 'sticky',
-          rect: el.getBoundingClientRect(),
+          rect: rect(el),
           container: {
             el: container,
-            rect: container.getBoundingClientRect(),
+            rect: rect(container),
           },
         }
       })
@@ -41,7 +43,7 @@ export default component((node, ctx) => {
             el,
             type: 'prlx',
             vars: JSON.parse(el.dataset.prlx),
-            rect: el.getBoundingClientRect(),
+            rect: rect(el),
             progress: {
               current: 0,
               target: 0,
@@ -54,11 +56,7 @@ export default component((node, ctx) => {
   function update({ wh }) {
     ty = pageYOffset
 
-    cy = round(lerp(cy, ty, ease), 100)
-
-    let d = cy - ty
-    if (d < 0) d *= -1
-    if (d < 0.1) cy = ty
+    cy = rLerp(cy, ty, ease, 100, 0.1)
 
     node.style.transform = translateY(-cy)
 

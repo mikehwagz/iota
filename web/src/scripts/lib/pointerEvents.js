@@ -3,6 +3,7 @@
 // github for original package: https://github.com/mattdesl/simple-input-events
 
 import mitt from 'mitt'
+import { rect } from '@selfaware/martha'
 
 export default function(opt) {
   const {
@@ -228,6 +229,6 @@ function getElementBounds(element) {
       height: window.innerHeight,
     }
   } else {
-    return element.getBoundingClientRect()
+    return rect(element)
   }
 }
