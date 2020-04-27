@@ -7,7 +7,7 @@
   "license": "NONE",
   "scripts": {
     "clean": "rimraf ./build",
-    "serve": "browser-sync build -w --no-notify",
+    "serve": "browser-sync build -w --no-notify --no-open",
     "build": "cross-env NODE_ENV=production run-s clean build:*",
     "build:webpack": "webpack",
     "build:eleventy": "eleventy --quiet",
@@ -43,6 +43,7 @@
     "cssnano-preset-advanced": "^4.0.7",
     "file-loader": "^5.1.0",
     "glob": "^7.1.6",
+    "globby": "^11.0.0",
     "groq": "^1.149.0",
     "mini-css-extract-plugin": "^0.9.0",
     "nanoclass": "^0.0.2",
