@@ -1,4 +1,4 @@
-import { picoapp } from 'picoapp'
+import { picoapp } from '@/lib/picoapp'
 import { size } from '@selfaware/martha'
 
 import overlay from '@/components/overlay'

@@ -1,4 +1,4 @@
-import { component } from 'picoapp'
+import { component } from '@/lib/picoapp'
 import { clamp } from '@selfaware/martha'
 import rLerp from '@/util/rLerp'
 
@@ -91,8 +91,6 @@ export default component((node, ctx) => {
       border.style.transform = transform.join(' ')
     }
   })
-
-  return () => {}
 })
 
 function getMultiplier(i) {

@@ -1,4 +1,4 @@
-import { component } from 'picoapp'
+import { component } from '@/lib/picoapp'
 import { add, rect, round, lerp, clamp } from '@selfaware/martha'
 import rLerp from '@/util/rLerp'
 import { qsa } from '@/util'
@@ -77,8 +77,6 @@ export default component((node, ctx) => {
 
     ctx.hydrate({ ty, cy, sh })
   }
-
-  return () => {}
 })
 
 function sticky({ el, rect, container, cy }) {

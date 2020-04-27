@@ -1,4 +1,4 @@
-import { component } from 'picoapp'
+import { component } from '@/lib/picoapp'
 import { lerp, clamp, round } from '@selfaware/martha'
 
 export default component((node, ctx) => {
@@ -44,8 +44,6 @@ export default component((node, ctx) => {
     node.style.transform = `scale(${ncx}, ${ncy})`
     inner.style.transform = `scale(${icx}, ${icy})`
   })
-
-  return () => {}
 })
 
 function getTransformOrigin(i) {

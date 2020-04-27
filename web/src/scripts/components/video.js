@@ -1,4 +1,4 @@
-import { component } from 'picoapp'
+import { component } from '@/lib/picoapp'
 import worker from 'workerize-loader!@/util/worker.js'
 
 let instance = worker()
@@ -16,6 +16,4 @@ export default component((video, ctx) => {
       }
     })
   })
-
-  return () => {}
 })

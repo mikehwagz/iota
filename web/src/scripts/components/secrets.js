@@ -1,4 +1,4 @@
-import { component } from 'picoapp'
+import { component } from '@/lib/picoapp'
 import { add, remove } from '@selfaware/martha'
 
 export default component((node, ctx) => {
@@ -9,6 +9,4 @@ export default component((node, ctx) => {
       i === index ? remove(secret, 'is-hidden') : add(secret, 'is-hidden'),
     )
   })
-
-  return () => {}
 })
