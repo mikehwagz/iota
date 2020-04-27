@@ -46,6 +46,8 @@ export default component((node, ctx) => {
     letters[zi].style.transform = `translate3d(0, 0, 0)`
     letters[i].style.transform = `translate3d(${mx * cx}px, ${my * cy}px, 0)`
   })
+
+  return () => {}
 })
 
 function getMultipliers(i) {

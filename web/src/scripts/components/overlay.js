@@ -51,4 +51,8 @@ export default component((node, ctx) => {
       index: -1,
     })
   })
+
+  return () => {
+    pointerEvents.disable()
+  }
 })

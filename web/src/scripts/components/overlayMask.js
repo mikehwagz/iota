@@ -44,6 +44,8 @@ export default component((node, ctx) => {
     node.style.transform = `scale(${ncx}, ${ncy})`
     inner.style.transform = `scale(${icx}, ${icy})`
   })
+
+  return () => {}
 })
 
 function getTransformOrigin(i) {

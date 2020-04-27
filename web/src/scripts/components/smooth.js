@@ -77,6 +77,8 @@ export default component((node, ctx) => {
 
     ctx.hydrate({ ty, cy, sh })
   }
+
+  return () => {}
 })
 
 function sticky({ el, rect, container, cy }) {

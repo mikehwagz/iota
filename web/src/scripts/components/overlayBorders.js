@@ -91,6 +91,8 @@ export default component((node, ctx) => {
       border.style.transform = transform.join(' ')
     }
   })
+
+  return () => {}
 })
 
 function getMultiplier(i) {

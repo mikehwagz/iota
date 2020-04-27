@@ -16,4 +16,6 @@ export default component((video, ctx) => {
       }
     })
   })
+
+  return () => {}
 })

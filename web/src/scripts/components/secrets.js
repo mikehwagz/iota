@@ -9,4 +9,6 @@ export default component((node, ctx) => {
       i === index ? remove(secret, 'is-hidden') : add(secret, 'is-hidden'),
     )
   })
+
+  return () => {}
 })
