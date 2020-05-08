@@ -44,5 +44,5 @@ export default () =>
       S.listItem()
         .title('Collections')
         .icon(() => <Emoji style={{ fontSize: 30 }} text="🥡" />)
-        .child(S.documentTypeList('product').title('Products')),
+        .child(S.documentTypeList('collection').title('Collections')),
     ])
