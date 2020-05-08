@@ -18,5 +18,17 @@ export default {
       },
       validation: (Rule) => Rule.required(),
     },
+    {
+      title: 'Content',
+      name: 'content',
+      description:
+        'If there is more than one section, titles will appear as anchor links in the sidebar',
+      type: 'array',
+      of: [
+        {
+          type: 'pageSection',
+        },
+      ],
+    },
   ],
 }

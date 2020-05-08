@@ -31,7 +31,7 @@ export default {
       title: 'Footer Menu',
       name: 'menu',
       type: 'array',
-      of: [{ type: 'internalLink' }, { type: 'externalLink' }],
+      of: [{ type: 'navLink' }],
       validation: (Rule) => Rule.max(4),
     },
   ],

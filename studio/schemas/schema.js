@@ -9,12 +9,26 @@ import productVariant from './documents/productVariant'
 import collection from './documents/collection'
 
 import seo from './objects/seo'
+import pageSection from './objects/pageSection'
+import richText from './objects/richText'
 import a11yImage from './objects/a11yImage'
 import externalLink from './objects/externalLink'
 import internalLink from './objects/internalLink'
+import emailLink from './objects/emailLink'
+import navLink from './objects/navLink'
 
 const documents = [config, footer, page, product, productVariant, collection]
-const objects = [seo, a11yImage, externalLink, internalLink]
+
+const objects = [
+  seo,
+  pageSection,
+  externalLink,
+  internalLink,
+  emailLink,
+  navLink,
+  richText,
+  a11yImage,
+]
 
 export default createSchema({
   name: 'default',

@@ -23,6 +23,15 @@ export default () =>
                     .documentId('config'),
                 ),
               S.listItem()
+                .title('Navigation')
+                .icon(() => <Emoji style={{ fontSize: 30 }} text="🧭" />)
+                .child(
+                  S.editor()
+                    .title('Navigation')
+                    .schemaType('navigation')
+                    .documentId('navigation'),
+                ),
+              S.listItem()
                 .title('Footer')
                 .icon(() => <Emoji style={{ fontSize: 30 }} text="👟" />)
                 .child(
