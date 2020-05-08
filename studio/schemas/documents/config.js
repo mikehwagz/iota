@@ -1,6 +1,6 @@
 export default {
   name: 'config',
-  title: 'Global Settings',
+  title: 'SEO Metadata',
   __experimental_actions: ['update', 'publish'],
   type: 'document',
   fields: [

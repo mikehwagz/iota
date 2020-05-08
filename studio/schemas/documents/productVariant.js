@@ -87,7 +87,8 @@ export default {
   ],
   preview: {
     select: {
-      title: 'content.main.title',
+      title: 'content.shopify.variantTitle',
+      subtitle: 'content.main.title',
       media: 'mainImage',
     },
   },
