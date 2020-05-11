@@ -48,6 +48,8 @@ export default {
               name: 'title',
               title: 'Title',
               type: 'string',
+              readOnly: true,
+              description: 'This comes from Shopify and cannot be changed',
             },
             {
               name: 'id',
