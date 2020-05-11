@@ -2,6 +2,9 @@ export default {
   title: 'Image',
   name: 'a11yImage',
   type: 'object',
+  options: {
+    collapsible: false,
+  },
   fields: [
     {
       title: 'Image',
@@ -17,4 +20,16 @@ export default {
       validation: (Rule) => Rule.required(),
     },
   ],
+  preview: {
+    select: {
+      media: 'image',
+      subtitle: 'altText',
+    },
+    prepare(selection) {
+      return {
+        ...selection,
+        title: 'Image',
+      }
+    },
+  },
 }

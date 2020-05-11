@@ -1,4 +1,7 @@
+import ConditionalField from '../../plugins/ConditionalField'
+import React from 'react'
 import Tabs from 'sanity-plugin-tabs'
+import delve from 'dlv'
 
 export default {
   name: 'product',
@@ -11,11 +14,13 @@ export default {
       type: 'object',
       inputComponent: Tabs,
       fieldsets: [
-        { name: 'main', title: 'Main' },
+        { name: 'main', title: 'Main Content' },
+        { name: 'secret', title: 'Secret Content' },
         { name: 'shopify', title: 'Shopify' },
       ],
       fields: [
         {
+          title: 'Main Content',
           name: 'main',
           type: 'object',
           fieldset: 'main',
@@ -24,6 +29,12 @@ export default {
               name: 'title',
               title: 'Title',
               type: 'string',
+            },
+            {
+              name: 'subtitle',
+              title: 'Optional Subtitle',
+              type: 'string',
+              description: '(i.e. by Ian Loring Shiver)',
             },
             {
               name: 'slug',
@@ -37,138 +48,159 @@ export default {
               },
               validation: (Rule) => Rule.required(),
             },
+            {
+              name: 'thumbnailHoverSequence',
+              title: 'Thumbnail Hover Sequence',
+              description: "Transparent png's only",
+              type: 'array',
+              of: [{ type: 'image' }],
+            },
+            {
+              name: 'hero',
+              type: 'object',
+              title: 'Hero',
+              fields: [
+                {
+                  name: 'landscape',
+                  title: 'Landscape Media',
+                  type: 'object',
+                  fields: [
+                    {
+                      title: 'Media Type',
+                      name: 'mediaType',
+                      type: 'string',
+                      options: {
+                        layout: 'radio',
+                        list: [
+                          { title: 'Video', value: 'video' },
+                          { title: 'Image', value: 'image' },
+                        ],
+                      },
+                    },
+                    {
+                      title: 'Video',
+                      name: 'video',
+                      type: 'video',
+                      inputComponent: ConditionalField,
+                      options: {
+                        collapsible: false,
+                        condition: (doc) =>
+                          delve(
+                            doc,
+                            'content.main.hero.landscape.mediaType',
+                          ) === 'video',
+                      },
+                    },
+                    {
+                      title: 'Image',
+                      name: 'image',
+                      type: 'a11yImage',
+                      inputComponent: ConditionalField,
+                      options: {
+                        collapsible: false,
+                        condition: (doc) =>
+                          delve(
+                            doc,
+                            'content.main.hero.landscape.mediaType',
+                          ) === 'image',
+                      },
+                    },
+                  ],
+                },
+                {
+                  name: 'portrait',
+                  title: 'Portrait Media',
+                  type: 'object',
+                  fields: [
+                    {
+                      title: 'Media Type',
+                      name: 'mediaType',
+                      type: 'string',
+                      options: {
+                        layout: 'radio',
+                        list: [
+                          { title: 'Video', value: 'video' },
+                          { title: 'Image', value: 'image' },
+                        ],
+                      },
+                    },
+                    {
+                      title: 'Video',
+                      name: 'video',
+                      type: 'video',
+                      inputComponent: ConditionalField,
+                      options: {
+                        collapsible: false,
+                        condition: (doc) =>
+                          delve(doc, 'content.main.hero.portrait.mediaType') ===
+                          'video',
+                      },
+                    },
+                    {
+                      title: 'Image',
+                      name: 'image',
+                      type: 'a11yImage',
+                      inputComponent: ConditionalField,
+                      options: {
+                        collapsible: false,
+                        condition: (doc) =>
+                          delve(doc, 'content.main.hero.portrait.mediaType') ===
+                          'image',
+                      },
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              title: 'Product Details',
+              name: 'details',
+              type: 'paragraphs',
+            },
+            {
+              title: 'Product Images',
+              name: 'images',
+              type: 'array',
+              of: [{ type: 'a11yImage' }],
+            },
+            {
+              title: 'Content Modules',
+              name: 'modules',
+              type: 'array',
+              of: [
+                { type: 'module.editorial' },
+                { type: 'module.full' },
+                { type: 'module.images' },
+                { type: 'module.text' },
+              ],
+            },
+          ],
+        },
+        {
+          title: 'Secret Content',
+          name: 'secret',
+          type: 'object',
+          fieldset: 'secret',
+          fields: [
+            {
+              title: 'Layouts',
+              type: 'array',
+              name: 'layouts',
+              description:
+                'Each layout corresponds to a letter in the corner of the screen (i.e. the second layout is revealed by dragging the O in the upper right corner)',
+              of: [
+                { type: 'module.half' },
+                { type: 'module.full' },
+                { type: 'module.message' },
+              ],
+              validation: (Rule) => Rule.length(4),
+            },
           ],
         },
         {
           name: 'shopify',
-          type: 'object',
+          type: 'shopify',
           fieldset: 'shopify',
-          fields: [
-            {
-              name: 'title',
-              title: 'Title',
-              type: 'string',
-              readOnly: true,
-              description: 'This comes from Shopify and cannot be changed',
-            },
-            {
-              name: 'id',
-              title: 'ID',
-              type: 'string',
-              description: 'This comes from Shopify and cannot be changed',
-              readOnly: true,
-              hidden: true,
-            },
-            {
-              name: 'deleted',
-              title: 'Deleted',
-              type: 'boolean',
-              description:
-                'When a product is deleted in Shopify, this switch will be on and you can safely delete it in Sanity once it is removed from any Collections that reference it.',
-            },
-            {
-              name: 'productId',
-              title: 'Product ID',
-              type: 'number',
-              description: 'This comes from Shopify and cannot be changed',
-              readOnly: true,
-              hidden: true,
-            },
-            {
-              name: 'defaultPrice',
-              title: 'Default Price',
-              type: 'string',
-              description: 'This comes from Shopify and cannot be changed',
-              readOnly: true,
-            },
-            {
-              name: 'variants',
-              title: 'Variants',
-              type: 'array',
-              of: [{ type: 'reference', to: { type: 'productVariant' } }],
-            },
-            {
-              title: 'Product Variant',
-              name: 'defaultVariant',
-              type: 'object',
-              description: `This information comes from Shopify and should not be modified here.`,
-              fieldsets: [
-                {
-                  name: 'information',
-                  title: 'Variant Information',
-                  options: {
-                    collapsible: true,
-                    collapsed: true,
-                  },
-                },
-              ],
-              fields: [
-                {
-                  title: 'Title',
-                  name: 'title',
-                  readOnly: true,
-                  type: 'string',
-                  fieldset: 'information',
-                },
-                {
-                  title: 'Weight in grams',
-                  name: 'grams',
-                  readOnly: true,
-                  type: 'number',
-                  fieldset: 'information',
-                },
-                {
-                  title: 'Price',
-                  name: 'price',
-                  readOnly: true,
-                  type: 'string',
-                  fieldset: 'information',
-                },
-                {
-                  title: 'Variant Id',
-                  name: 'variantId',
-                  readOnly: true,
-                  type: 'number',
-                  fieldset: 'information',
-                },
-                {
-                  title: 'SKU',
-                  name: 'sku',
-                  readOnly: true,
-                  type: 'string',
-                  fieldset: 'information',
-                },
-                {
-                  title: 'Taxable',
-                  name: 'taxable',
-                  readOnly: true,
-                  type: 'boolean',
-                  fieldset: 'information',
-                },
-                {
-                  title: 'Inventory Policy',
-                  name: 'inventoryPolicy',
-                  readOnly: true,
-                  type: 'string',
-                  fieldset: 'information',
-                },
-                {
-                  title: 'Inventory Quantity',
-                  name: 'inventoryQuantity',
-                  readOnly: true,
-                  type: 'number',
-                  fieldset: 'information',
-                },
-                {
-                  title: 'Bar code',
-                  name: 'barcode',
-                  readOnly: true,
-                  type: 'string',
-                  fieldset: 'information',
-                },
-              ],
-            },
-          ],
         },
       ],
     },
@@ -176,7 +208,19 @@ export default {
   preview: {
     select: {
       title: 'content.main.title',
-      media: 'content.main.mainImage',
+      thumb: 'content.main.thumbnailHoverSequence.0.asset.url',
+    },
+    prepare({ title, thumb }) {
+      return {
+        title,
+        media: (
+          <img
+            src={thumb}
+            alt={`${title} thumbnail`}
+            style={{ objectFit: 'contain' }}
+          />
+        ),
+      }
     },
   },
 }

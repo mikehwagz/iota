@@ -1,4 +1,4 @@
-import ConditionalField from '../../plugins/ConditionalField'
+import ConditionalField from '../../plugins/ConditionalFieldWithParent'
 
 export default {
   title: 'Navigation Link',
