@@ -171,7 +171,6 @@ export default {
                 { type: 'module.editorial' },
                 { type: 'module.full' },
                 { type: 'module.images' },
-                { type: 'module.text' },
               ],
             },
           ],

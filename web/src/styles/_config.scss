@@ -12,6 +12,7 @@ $font-sizes: (
   '0': 0rem,
   '18': 1.8rem,
   '24': 2.4rem,
+  '28': 2.8rem,
   '30': 3rem,
   '35': 3.5rem,
   '36': 3.6rem,
@@ -45,6 +46,7 @@ $font-stacks: (
 );
 
 $max-widths: (
+  '640': 64rem,
   '840': 84rem,
   '880': 88rem,
   '892': 89.2rem,

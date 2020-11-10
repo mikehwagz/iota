@@ -5,6 +5,7 @@ const readFile = util.promisify(fs.readFile)
 const cx = require('nanoclass')
 const blocksToHtml = require(`@sanity/block-content-to-html`)
 const linkResolver = require('./src/util/linkResolver')
+const centsToPriceNoTrailingZeros = require('./src/util/centsToPriceNoTrailingZeros')
 // const imageUrlBuilder = require('@sanity/image-url')
 // const client = require('./src/util/client')
 // const builder = imageUrlBuilder(client)
@@ -84,6 +85,11 @@ module.exports = function(eleventyConfig) {
       return ''
     }
   })
+
+  eleventyConfig.addFilter(
+    'centsToPriceNoTrailingZeros',
+    centsToPriceNoTrailingZeros,
+  )
 
   // eleventyConfig.addShortcode('urlFor', (image, width) => {
   //   return builder

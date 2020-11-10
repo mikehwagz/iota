@@ -10,6 +10,7 @@ import flag from '@/components/flag'
 import video from '@/components/video'
 import smooth from '@/components/smooth'
 import newsletter from '@/components/newsletter'
+import productThumb from '@/components/productThumb'
 
 const components = {
   overlay,
@@ -21,6 +22,7 @@ const components = {
   video,
   smooth,
   newsletter,
+  productThumb,
 }
 
 const state = {
@@ -33,6 +35,7 @@ const state = {
   min: null,
   ease: 0.2,
   paused: false,
+  checkout: { lineItems: [] },
 }
 
 export default picoapp(components, state)

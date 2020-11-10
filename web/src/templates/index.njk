@@ -2,7 +2,45 @@
 layout: base.njk
 title: Home
 ---
-<div class="abs fill ph10" data-router-view="default">
-  <h1 class="serif mb20 f295">Shop</h1>
-  <a class="tdu lsn025em" href="/product/">View PDP prototype</a>
+<div class="abs fill" data-router-view="default">
+  <a class="logo db fix bg-red z10" href="/">
+    <div class="rel x y">
+      <div class="logo__letter f45 abs top left tc mt25 ml30">I</div>
+      <div class="logo__letter f45 abs top right tc mt25 mr30">O</div>
+      <div class="logo__letter f45 abs bottom left tc mb25 ml30">T</div>
+      <div class="logo__letter f45 abs bottom right tc mb25 mr30">A</div>
+    </div>
+  </a>
+  <div class="x pb65" data-component="smooth">
+    <div class="pl250 pr80 pt80 pb200 min-vh100">
+      {% set cls = cycler("odd", "even") %}
+      {% for product in products %}
+        <a 
+          class="{% classNames
+            'db max-w640 mb50',
+            'mla' if cls.next() == 'even'
+          %}"
+          href="/products/{{ product.slug }}"
+          data-component="productThumb"
+        >
+          <div class="r" style="padding-top: {{ 1 / product.thumbs[0].metadata.dimensions.aspectRatio * 100 }}%">
+            {% for image in product.thumbs %}
+              <div
+                class="{% classNames
+                  'ro js-images',
+                  'o0' if not loop.first
+                %}"
+              >
+                <img src="{{ image.url }}" alt="" class="x y o-cover">
+              </div>
+            {% endfor %}
+          </div>
+          <h2 class="f24 lsn025em tc">
+            {{ product.title }}, {{ product.shopify.defaultPrice | centsToPriceNoTrailingZeros }}
+          </h2>
+        </a>
+      {% endfor %}
+    </div>
+    {% include 'footer.njk' %}
+  </div>
 </div>

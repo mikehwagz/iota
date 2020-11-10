@@ -3,6 +3,7 @@ import loadFonts from '@/lib/fontLoader'
 import { on, remove, size } from '@selfaware/martha'
 import gsap from 'gsap'
 import app from '@/app'
+import { initCheckout } from '@/util/shopify'
 
 class Base extends Highway.Renderer {
   onFirstLoad() {
@@ -17,7 +18,7 @@ class Base extends Highway.Renderer {
 
     gsap.set('[data-router-view]', { autoAlpha: 1 })
 
-    loadFonts().then(() => {
+    Promise.all([loadFonts(), initCheckout()]).then(() => {
       remove(document.body, 'o0')
     })
   }
