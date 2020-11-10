@@ -1,0 +1,16 @@
+<a
+  class="{{ cx }}"
+  href="{{ link | href }}"
+  {% if link._type === 'emailLink' %}
+    data-router-disabled
+  {% endif %}
+  {% if link._type === 'externalLink' %}
+    target="_blank"
+    rel="noopener noreferrer"
+  {% endif %}
+>
+  {{ link.title }}
+</a>
+
+{% set cx = null %}
+{% set link = null %}

@@ -1,22 +1,29 @@
-button {
+button,
+input,
+select,
+textarea {
   border: none;
   border-radius: 0px;
   margin: 0;
   padding: 0;
   width: auto;
-  overflow: visible;
+  // overflow: visible;
   background: transparent;
   color: inherit;
   font: inherit;
   line-height: inherit;
-  text-align: center;
   text-decoration: none;
-  cursor: pointer;
   white-space: normal;
   -webkit-font-smoothing: inherit;
   -moz-osx-font-smoothing: inherit;
   -webkit-appearance: none;
   outline: unset;
+  outline-color: currentColor;
+}
+
+button {
+  text-align: center;
+  cursor: pointer;
 }
 
 /* http://meyerweb.com/eric/tools/css/reset/ 

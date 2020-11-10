@@ -193,7 +193,6 @@ export default {
                 { type: 'module.full' },
                 { type: 'module.message' },
               ],
-              validation: (Rule) => Rule.length(4),
             },
           ],
         },

@@ -1,0 +1,13 @@
+.rich-text {
+  h2 {
+    font-family: $sans;
+    font-weight: 400;
+    letter-spacing: -0.025em;
+    margin-bottom: 2rem;
+    margin-top: 5.5rem;
+  }
+
+  p + p {
+    text-indent: 8%;
+  }
+}

@@ -1,0 +1,69 @@
+---
+layout: base.njk
+permalink: /{{ p.slug }}/
+pagination:
+  alias: p
+  data: pages
+  size: 1
+renderData:
+  title: "{{ p.title }}"
+---
+<div class="abs fill" data-router-view="default">
+  <a class="logo db fix bg-red z10" href="/">
+    <div class="rel x y">
+      <div class="logo__letter f45 abs top left tc mt25 ml30">I</div>
+      <div class="logo__letter f45 abs top right tc mt25 mr30">O</div>
+      <div class="logo__letter f45 abs bottom left tc mb25 ml30">T</div>
+      <div class="logo__letter f45 abs bottom right tc mb25 mr30">A</div>
+    </div>
+  </a>
+  <div class="x pb65" data-component="smooth">
+    <div class="pl160 pb20">
+      <div class="pl115 pt115">
+        {% for section in p.sections %}
+          <div id="{{ section.title | slug }}" class="x max-w892">
+            <h2 class="f45 ttu lsn025em mb20">{{ section.title }} +</h2>
+            <div class="rich-text serif f36 mb100">
+              {{ section.richText | blocksToHtml | safe }}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <footer class="bg-black c-white pt50 pl20 pr60 pb30 df jcb">
+      <div>
+        <div class="rel max-w880 mb40" data-component="newsletter">
+          <form class="df bb bc-white js-form">
+            <input
+              class="fg1 f45 lsn025em pb20"
+              type="email"
+              autocomplete="off"
+              name="email"
+              placeholder="{{ footer.newsletterSignup.placeholderText }}"
+            />
+            <button class="f45 lsn025em ttu pb20" type="submit">
+              {{ footer.newsletterSignup.submitButtonText }}
+            </button>
+          </form>
+          <div
+            class="serif abs top left pt10 js-message"
+            data-error="Oops, something went wrong"
+            style="opacity: 0; visibility: hidden;"
+          >{{ footer.newsletterSignup.successMessage }}</div>
+        </div>
+        <nav>
+          {% for item in footer.menu %}
+            {% set link = item %}
+            {% set cx = 'f45 ttu lsn025em mr40' %}
+            {% include 'link.njk' %}
+          {% endfor %}
+        </nav>
+      </div>
+      <div class="mark">
+        <svg class="db" viewBox="0 0 144 145" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M143.999 73.5644C143.979 58.7175 139.305 44.2444 130.626 32.1501C121.947 20.0557 109.692 10.9387 95.559 6.06206H142.266V0H1.71275V6.06206H48.4201C37.1832 9.9205 27.0851 16.4819 19.0289 25.1596C10.9728 33.8373 5.20964 44.3606 2.2549 55.7887C-0.699841 67.2168 -0.754076 79.1933 2.09704 90.6472C4.94816 102.101 10.6157 112.676 18.593 121.425L9.50553 143.306H16.5092L23.5806 126.386C36.8176 138.361 54.0853 145 71.9988 145C89.9124 145 107.18 138.361 120.417 126.386L127.482 143.306H134.486L125.398 121.425C137.381 108.321 144.013 91.2577 143.999 73.5644ZM78.6849 8.94322C90.4522 10.135 101.674 14.4698 111.156 21.4863C120.637 28.5028 128.024 37.9386 132.531 48.7896C137.038 59.6405 138.495 71.5008 136.749 83.1083C135.002 94.7159 130.116 105.636 122.612 114.708L78.6849 8.94322ZM68.7282 18.0822V87.5297H39.8505L68.7282 18.0822ZM75.2694 18.2902L104.141 87.5297H75.2694V18.2902ZM21.3858 114.708C13.8812 105.636 8.99561 94.7159 7.24892 83.1083C5.50222 71.5008 6.95977 59.6405 11.4665 48.7896C15.9732 37.9386 23.3604 28.5028 32.8421 21.4863C42.3239 14.4698 53.5454 10.135 65.3127 8.94322L21.3858 114.708ZM37.2796 93.5918H68.722V138.436C52.7645 137.653 37.6516 131.086 26.2501 119.981L37.2796 93.5918ZM75.2694 93.5918H106.712L117.754 119.981C106.351 131.085 91.2389 137.652 75.2818 138.436L75.2694 93.5918Z" fill="white"/>
+        </svg>
+      </div>
+    </footer>
+  </div>
+</div>

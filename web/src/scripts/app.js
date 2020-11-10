@@ -9,6 +9,7 @@ import secrets from '@/components/secrets'
 import flag from '@/components/flag'
 import video from '@/components/video'
 import smooth from '@/components/smooth'
+import newsletter from '@/components/newsletter'
 
 const components = {
   overlay,
@@ -19,6 +20,7 @@ const components = {
   flag,
   video,
   smooth,
+  newsletter,
 }
 
 const state = {

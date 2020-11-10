@@ -18,7 +18,7 @@ const client = sanityClient({
   projectId: '2hxdt5la',
   dataset: 'production',
   token:
-    'skMlIAAljLrN5aOf2VSpiZTtwaUlerfWrkBndNwTEeeYVI1NQbArb4R1IQ4vkcqn3sKeZrl1tXQXi5HzG',
+    'sk1873IMQjN2ZW06yYCP7BRsV2cCgDcK5JZFWxxkwRs11b6wBTHCSF2FwxwiqaUm4hirtuOPQsqowi7iwADFIGRvwkuIxGEVj4JNWc5a4aTrEgSCGA6w416dhbK909TtXoEPCaGyI9TqGPyps9HHN8udiGUXNP0A8y9hnE6eH6G6uBw7Ro07',
   useCdn: false,
 })
 

@@ -36,13 +36,18 @@ $letter-spacings: (
   'n025em': -0.025em,
 );
 
+$sans: unquote('Work Sans, sans-serif');
+$serif: unquote('Sentinel Light, serif');
+
 $font-stacks: (
-  'sans': 'Work Sans, sans-serif',
-  'serif': 'Sentinel Light, serif',
+  'sans': $sans,
+  'serif': $serif,
 );
 
 $max-widths: (
+  '840': 84rem,
   '880': 88rem,
+  '892': 89.2rem,
   '1080': 108rem,
 );
 

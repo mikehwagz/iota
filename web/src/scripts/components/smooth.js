@@ -77,6 +77,10 @@ export default component((node, ctx) => {
 
     ctx.hydrate({ ty, cy, sh })
   }
+
+  return () => {
+    document.body.removeAttribute('style')
+  }
 })
 
 function sticky({ el, rect, container, cy }) {
