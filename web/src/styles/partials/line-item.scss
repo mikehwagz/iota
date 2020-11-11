@@ -1,0 +1,9 @@
+.line-item {
+  &__remove {
+    opacity: 0;
+
+    .line-item:hover & {
+      opacity: 1;
+    }
+  }
+}

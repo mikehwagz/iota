@@ -13,12 +13,10 @@ class Base extends Highway.Renderer {
     // setup render loop
     gsap.ticker.add(this.tick)
 
-    // mount picoapp
-    this.mount()
-
     gsap.set('[data-router-view]', { autoAlpha: 1 })
 
     Promise.all([loadFonts(), initCheckout()]).then(() => {
+      this.onEnter()
       remove(document.body, 'o0')
     })
   }

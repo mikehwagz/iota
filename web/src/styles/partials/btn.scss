@@ -1,7 +1,11 @@
 .btn {
-  &:hover {
+  &:hover:not(:disabled) {
     background-color: $black;
     color: $white;
     font-style: italic;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
   }
 }

@@ -57,7 +57,7 @@ export async function addItemToCheckout(variantId, quantity) {
     lineItemsToAdd,
   )
 
-  app.emit('bag:add', { checkout: newCheckout })
+  app.emit(['bag:update', 'bag:add'], { checkout: newCheckout })
 }
 
 export async function removeItemFromCheckout(itemId) {

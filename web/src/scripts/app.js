@@ -1,4 +1,4 @@
-import { picoapp } from '@/lib/picoapp'
+import { picoapp } from 'picoapp'
 import { size } from '@selfaware/martha'
 
 import overlay from '@/components/overlay'
@@ -11,6 +11,9 @@ import video from '@/components/video'
 import smooth from '@/components/smooth'
 import newsletter from '@/components/newsletter'
 import productThumb from '@/components/productThumb'
+import productForm from '@/components/productForm'
+import bag from '@/components/bag'
+import bagCount from '@/components/bagCount'
 
 const components = {
   overlay,
@@ -23,6 +26,9 @@ const components = {
   smooth,
   newsletter,
   productThumb,
+  productForm,
+  bag,
+  bagCount,
 }
 
 const state = {

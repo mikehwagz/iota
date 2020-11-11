@@ -1,4 +1,4 @@
-import { component } from '@/lib/picoapp'
+import { component } from 'picoapp'
 import createPointerEvents from '@/lib/pointerEvents'
 import { has, add, remove, index } from '@selfaware/martha'
 

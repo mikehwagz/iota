@@ -75,27 +75,18 @@ renderData:
                         <li class="ph15">L</li>
                         <li class="ph15">XL</li>
                       </ul> #}
-                      <div class="df mb55">
-                        <p class="serif mr30">{{ p.shopify.defaultPrice | centsToPriceNoTrailingZeros }}</p>
-                        <button class="btn serif ba br30 ph15">Add to Bag</button>
-                      </div>
+                      <form data-component="productForm" data-id="{{ p.shopify.productId }}">
+                        <div class="df mb55">
+                          <p class="serif mr30">{{ p.shopify.defaultPrice | centsToPriceNoTrailingZeros }}</p>
+                          <button class="btn serif ba br30 ph15 js-atc">Add to Bag</button>
+                        </div>
+                      </form>
                       {% if p.details %}
                         <details class="db ls0 serif f28">
                           <summary class="sans f45 lsn025em ttu">Details</summary>
                           {{ p.details | blocksToHtml | safe }}
                         </details>
                       {% endif %}
-                      {# <ul class="f24 serif lsn01em lh154">
-                        <li>40 pages</li>
-                        <li>8”x10”</li>
-                        <li>Digital Offset</li>
-                        <li>Full color</li>
-                        <li>Singer Sewn Bound</li>
-                        <li>Printed in first edition of 50, hand numbered</li>
-                        <li>Printed by Conveyor Studio</li>
-                        <li>Designed by Nick Massarelli</li>
-                        <li>ISBN: 978-0-9991563-1-5</li>
-                      </ul> #}
                     </div>
                   </div>
                 </div>

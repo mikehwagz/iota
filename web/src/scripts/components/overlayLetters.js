@@ -1,4 +1,4 @@
-import { component } from '@/lib/picoapp'
+import { component } from 'picoapp'
 import { clamp } from '@selfaware/martha'
 import rLerp from '@/util/rLerp'
 

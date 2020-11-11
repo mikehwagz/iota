@@ -2,6 +2,14 @@
 layout: base.njk
 title: Bag
 ---
-<div class="abs fill ph10 bg-black c-white" data-router-view="default">
-  <h1 class="serif mb20 f295">Bag—</h1>
+<div class="abs fill bg-black c-white" data-router-view="default">
+  <div class="x" data-component="smooth">
+    <header class="df jcb ph20">
+      <h1 class="serif f196 lsn025em">Bag—</h1>
+      <div class="pt30">
+        {% include 'mark.njk' %}
+      </div>
+    </header>
+    <div data-component="bag"></div>
+  </div>
 </div>

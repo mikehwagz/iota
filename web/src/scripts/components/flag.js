@@ -1,4 +1,4 @@
-import { component } from '@/lib/picoapp'
+import { component } from 'picoapp'
 
 export default component((node, ctx) => {
   let p = node.firstElementChild

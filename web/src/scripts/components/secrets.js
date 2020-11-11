@@ -1,4 +1,4 @@
-import { component } from '@/lib/picoapp'
+import { component } from 'picoapp'
 import { add, remove } from '@selfaware/martha'
 
 export default component((node, ctx) => {
