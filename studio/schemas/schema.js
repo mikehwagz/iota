@@ -24,7 +24,6 @@ import fullModule from './objects/module.full'
 import halfModule from './objects/module.half'
 import imagesModule from './objects/module.images'
 import messageModule from './objects/module.message'
-import textModule from './objects/module.text'
 
 const documents = [config, footer, page, product, productVariant, collection]
 
@@ -45,7 +44,6 @@ const objects = [
   halfModule,
   imagesModule,
   messageModule,
-  textModule,
 ]
 
 export default createSchema({

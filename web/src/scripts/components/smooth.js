@@ -13,7 +13,7 @@ export default component((node, ctx) => {
   let stickyEls = qsa('[data-sticky]', node)
   let prlxEls = qsa('[data-prlx]', node)
 
-  add(node, 'fix', 'top', 'fill-x', 'oh')
+  add(node, 'fix', 'top', 'fill-x', 'wct')
   ctx.on('resize', resize)
   ctx.on('tick', update)
 

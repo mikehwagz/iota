@@ -12,8 +12,10 @@ import smooth from '@/components/smooth'
 import newsletter from '@/components/newsletter'
 import productThumb from '@/components/productThumb'
 import productForm from '@/components/productForm'
+import productQuickAdd from '@/components/productQuickAdd'
 import bag from '@/components/bag'
 import bagCount from '@/components/bagCount'
+import accordion from '@/components/accordion'
 
 const components = {
   overlay,
@@ -29,6 +31,8 @@ const components = {
   productForm,
   bag,
   bagCount,
+  accordion,
+  productQuickAdd,
 }
 
 const state = {

@@ -1,3 +1,5 @@
+import blocksToPlainText from '../../util/blocksToPlainText'
+
 export default {
   title: 'Image + Editorial',
   name: 'module.editorial',
@@ -9,26 +11,22 @@ export default {
       type: 'a11yImage',
     },
     {
-      title: 'Image Size',
-      name: 'imageSize',
-      type: 'string',
-      options: {
-        layout: 'radio',
-        list: [
-          { title: 'Crop', value: 'cover' },
-          { title: 'Fit', value: 'contain' },
-        ],
-      },
-    },
-    {
-      title: 'Full bleed?',
-      name: 'fullBleed',
-      type: 'boolean',
-    },
-    {
       title: 'Editorial',
       name: 'editorial',
       type: 'paragraphs',
     },
   ],
+  preview: {
+    select: {
+      media: 'image.image',
+      subtitle: 'editorial',
+    },
+    prepare(selection) {
+      return {
+        ...selection,
+        title: 'Image + Editorial',
+        subtitle: blocksToPlainText(selection.subtitle),
+      }
+    },
+  },
 }

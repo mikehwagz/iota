@@ -9,4 +9,15 @@ export default {
       type: 'a11yImage',
     },
   ],
+  preview: {
+    select: {
+      media: 'image.image',
+    },
+    prepare(selection) {
+      return {
+        ...selection,
+        title: 'Full Width Image',
+      }
+    },
+  },
 }

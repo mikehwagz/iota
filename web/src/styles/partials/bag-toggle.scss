@@ -1,0 +1,8 @@
+.bag-toggle {
+  &:hover {
+    .bag-toggle__count {
+      background-color: $black;
+      color: $white;
+    }
+  }
+}

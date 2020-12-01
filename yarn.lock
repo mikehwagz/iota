@@ -1431,10 +1431,10 @@
     fs-extra "^6.0.1"
     promise-props-recursive "^1.0.0"
 
-"@sanity/cli@^1.149.9":
-  version "1.149.9"
-  resolved "https://registry.yarnpkg.com/@sanity/cli/-/cli-1.149.9.tgz#32bbe27d5807e94d932760c6785fed6bbbb5b732"
-  integrity sha512-svC5aH+h/BFPMNvxXt6b9FxRc/yIQhY8jPK15h0V+dA4p20LnjXCK//Y+vvhGTqEZ06QLAQv/je2s4Lnzgz0jA==
+"@sanity/cli@^2.0.9":
+  version "2.0.9"
+  resolved "https://registry.yarnpkg.com/@sanity/cli/-/cli-2.0.9.tgz#1ba41179b58c7302d2bc144e874e2676a766d128"
+  integrity sha512-bFjtABpXvG69NkVSdJ/jplpnNev3prbQh9w5PX3xbgU9phIakzDYGHfjbF7bvP1W68GQWAE8c6igUyBM7J2I2Q==
 
 "@sanity/client@1.149.7", "@sanity/client@^1.149.7":
   version "1.149.7"
@@ -2012,9 +2012,10 @@
     "@sanity/util" "1.149.7"
     loader-utils "1.1.0"
 
-"@selfaware/martha@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@selfaware/martha/-/martha-0.0.5.tgz#464f7f5e9a03a63a7b68b7b4071d26e962c8ded0"
+"@selfaware/martha@^0.0.11":
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/@selfaware/martha/-/martha-0.0.11.tgz#3b9ee92dd22001172b96162f9ca415a589d38c78"
+  integrity sha512-8qpcabQgalGI/4foX9FpS2btcQYUKw9QxXh8lnlqFz/O6pRLkyXJOJnZBYsW53amR5i7bum0TXeSKSMVFsRQkg==
 
 "@selfaware/wool@^1.0.3":
   version "1.0.3"

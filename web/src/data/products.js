@@ -39,6 +39,44 @@ module.exports = async function() {
           ...image.asset->
         }
       },
+    },
+    'hero': content.main.hero {
+      landscape {
+        mediaType,
+        mediaType == 'video' => {
+          video {
+            ...file.asset->
+          },
+          poster {
+            altText,
+            ...image.asset->
+          }
+        },
+        mediaType == 'image' => {
+          image {
+            altText,
+            ...image.asset->
+          }
+        }
+      },
+      portrait {
+        mediaType,
+        mediaType == 'video' => {
+          video {
+            ...file.asset->
+          },
+          poster {
+            altText,
+            ...image.asset->
+          }
+        },
+        mediaType == 'image' => {
+          image {
+            altText,
+            ...image.asset->
+          }
+        }
+      }
     }
   }`)
 

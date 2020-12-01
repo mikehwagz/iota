@@ -1,11 +1,10 @@
 import { component } from 'picoapp'
-import choozy from 'choozy'
-import { on } from '@selfaware/martha'
+import { on, qsa } from '@selfaware/martha'
 import { client, addItemToCheckout } from '@/util/shopify'
 import { encode, decode } from 'shopify-gid'
 
 export default component(async (node, ctx) => {
-  let { atc } = choozy(node)
+  let atcBtns = qsa('.js-atc')
 
   let productId = node.dataset.id
   let shopifyId = encode('Product', productId, {
@@ -39,7 +38,9 @@ export default component(async (node, ctx) => {
   }
 
   function setSoldOut() {
-    atc.textContent = 'Sold Out'
-    atc.setAttribute('disabled', '')
+    atcBtns.forEach((btn) => {
+      btn.textContent = 'Sold Out'
+      btn.setAttribute('disabled', '')
+    })
   }
 })

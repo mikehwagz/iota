@@ -1,0 +1,24 @@
+<section class="row aic bg-white">
+  <div class="col-8">
+    <div class="r r--4x5">
+      <div class="ro">
+        <img
+          src="{{ module.image1.url }}"
+          alt="{{ module.image1.altText }}"
+          class="x y o-cover"
+        >
+      </div>
+    </div>
+  </div>
+  <div class="col-8 ph140">
+    <div class="r" style="padding-top: {{ 1 / module.image2.metadata.dimensions.aspectRatio * 100 }}%">
+      <div class="ro">
+        <img
+          src="{{ module.image2.url }}"
+          alt="{{ module.image2.altText }}"
+          class="x"
+        >
+      </div>
+    </div>
+  </div>
+</section>

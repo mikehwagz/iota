@@ -9,6 +9,9 @@ renderData:
   title: "{{ p.title }}"
 ---
 <div class="fix fill oh" data-router-view="default">
+  <div data-component="productQuickAdd">
+    <p class="serif">{{ p.shopify.defaultPrice | centsToPriceNoTrailingZeros }} — <button class="btn btn--text serif js-atc" type="submit" form="product-form">Add to Bag</button></p>
+  </div>
   <div class="abs fill-nav">
     <div class="rel x y">
 
@@ -20,29 +23,45 @@ renderData:
           <div class="x y">
           {# MASK START #}
             <div class="mb-nav bg-white wct" data-component="smooth">
+
+              {# Hero #}
               <section class="x vh100-nav--2x bg-white wct" data-sticky-container>
                 <div class="rel x vh100-nav">
                   <div class="x y" data-sticky>
-                    <video
-                      class="x y o-cover landscape"
-                      data-src="/assets/video-landscape.mp4"
-                      poster="/assets/poster-landscape.jpg"
-                      autoplay
-                      playsinline
-                      muted
-                      loop
-                      data-component="video"
-                    ></video>
-                    <video
-                      class="x y o-cover portrait"
-                      data-src="/assets/video-portrait.mp4"
-                      poster="/assets/poster-portrait.jpg"
-                      autoplay
-                      playsinline
-                      muted
-                      loop
-                      data-component="video"
-                    ></video>
+                    {% if p.hero.landscape.mediaType == 'video' %}
+                      <video
+                        class="x y o-cover landscape"
+                        src="{{ p.hero.landscape.video.url }}#t=0.1"
+                        autoplay
+                        playsinline
+                        muted
+                        loop
+                        preload="auto"
+                      ></video>
+                    {% else %}
+                      <img
+                        class="x y o-cover landscape"
+                        src="{{ p.hero.landscape.image.url }}"
+                        alt="{{ p.hero.landscape.image.altText }}"
+                      >
+                    {% endif %}
+                    {% if p.hero.landscape.mediaType == 'video' %}
+                      <video
+                        class="x y o-cover portrait"
+                        src="{{ p.hero.portrait.video.url }}#t=0.1"
+                        autoplay
+                        playsinline
+                        muted
+                        loop
+                        preload="auto"
+                      ></video>
+                    {% else %}
+                      <img
+                        class="x y o-cover portrait"
+                        src="{{ p.hero.portrait.image.url }}"
+                        alt="{{ p.hero.portrait.image.altText }}"
+                      >
+                    {% endif %}
                   </div>
                   <div class="abs fill df jcc aic">
                     <h1 class="serif f295 lh087 tc c-white">{{ p.title }}</h1>
@@ -50,17 +69,14 @@ renderData:
                 </div>
               </section>
 
-              
+              {# Product Detail #}
               <section class="row" data-sticky-container>
                 <div class="col-8">
-                  {# <img src="/assets/demo-5.jpg" class="db x vh100-nav o-cover">
-                  <img src="/assets/demo-4.jpg" class="db x vh100-nav o-cover"> #}
-                  <div class="x vh100-nav oh">
-                    <img src="/assets/demo-6.jpg" class="db x y o-cover">
-                  </div>
-                  <div class="x vh100-nav oh">
-                    <img src="/assets/demo-9.jpg" class="db x y o-cover">
-                  </div>
+                  {% for image in p.images %}
+                    <div class="x vh100-nav oh">
+                      <img src="{{ image.url }}" alt="{{ image.altText }}" class="db x y o-cover">
+                    </div>
+                  {% endfor %}
                 </div>
                 <div class="col-7">
                   <div class="vh100-nav df aic" data-sticky>
@@ -75,94 +91,55 @@ renderData:
                         <li class="ph15">L</li>
                         <li class="ph15">XL</li>
                       </ul> #}
-                      <form data-component="productForm" data-id="{{ p.shopify.productId }}">
+                      <form id="product-form" data-component="productForm" data-id="{{ p.shopify.productId }}">
                         <div class="df mb55">
                           <p class="serif mr30">{{ p.shopify.defaultPrice | centsToPriceNoTrailingZeros }}</p>
                           <button class="btn serif ba br30 ph15 js-atc">Add to Bag</button>
                         </div>
                       </form>
                       {% if p.details %}
-                        <details class="db ls0 serif f28">
-                          <summary class="sans f45 lsn025em ttu">Details</summary>
-                          {{ p.details | blocksToHtml | safe }}
-                        </details>
+                        <div class="accordion" data-component="accordion">
+                          <div>
+                            <button class="accordion__header pb10 tl df aic js-headers">
+                              <h2 class="sans f36 lsn025em ttu mr15">Details</h2>
+                              <div class="accordion__arrow df aic">
+                                <svg width="22" height="23" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                  <path fill-rule="evenodd" clip-rule="evenodd" d="M1.74845e-07 11L0 13C5.52285 13 10 17.4772 10 23H12C12 17.4772 16.4772 13 22 13V11C17.8261 11 14.1498 13.131 12 16.3644L12 1.74845e-07L10 0L10 16.3644C7.85016 13.131 4.17394 11 1.74845e-07 11Z" fill="black"/>
+                                </svg>
+                              </div>
+                            </button>
+                          </div>
+                          <div class="accordion__panel js-panels">
+                            <div class="accordion__panel-inner js-inners">
+                              <div class="ls0 serif f28">
+                                {{ p.details | blocksToHtml | safe }}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       {% endif %}
                     </div>
                   </div>
                 </div>
               </section>
 
-              <section class="row" data-sticky-container>
-                <div class="col-8">
-                  <img src="/assets/demo-5.jpg" class="db x vh100-nav o-cover" data-sticky>
+              {% if p.modules.length %}
+                {% for module in p.modules %}
+                  {% set type = module._type %}
+                  {% set moduleTemplate %}
+                    {% include type + '.njk' ignore missing %}
+                  {% endset %}
+                  {% if moduleTemplate | trim | length %}
+                    {{ moduleTemplate | safe }}
+                  {% else %}
+                    {% debug module %}
+                  {% endif %}
+                {% endfor %}
+              {% else %}
+                <div class="ph40 pt60 vh100-nav">
+                  <h1 class="serif f48 lh117">{{ p.title }}</h1>
                 </div>
-                <div class="col-7">
-                  <div class="pt30 pl10 pr30 pb80 f45 lh120 lsn025em" data-sticky>
-                    <h2 class="mb25">
-                      INFORMATION +
-                    </h2>
-                    <div class="f35 lh111 ls0 serif rte">
-                      <p>Ian Loring Shiver is a 32 year old commercial still life photographer originally from just outside of DC. After receiving his undergraduate degree from Temple University, he has spent the last 6 years working as a freelance photographer in Philadelphia.</p>
-                      <p>The formal aspects of Ian's work pay homage to his training in product photography, as well as his patience for creating complicated compositions. In his personal projects he focuses on stripping away artifice to create honest and isolated moments within often chaotic or unexpected environments.</p>
-                      <p>Squash Blossom serves as the exhibition catalog for the still life show Garden Bouquet, which opened on September 8th 2018 at James Oliver Gallery in Philadelphia. The pieces in this show and book are the culmination of a 2 year study of the visual portrayal of romantic love. Working with 4 different wedding floral designers and using traditional objects and colors, we explored visuals that represent a more realistic and honest view of romance — full of strangeness and imperfection while still being aesthetically fulfilling. Each piece is named after a different 90's romance film that influenced the author’s own unrealistic views of romance.</p>
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              <section class="row aic bg-white pv80">
-                <div class="col-8">
-                  <div class="r r--4x5">
-                    <div class="ro">
-                      <img src="/assets/demo-2.jpg" class="x">
-                    </div>
-                  </div>
-                </div>
-                <div class="col-7 ph120">
-                  <div class="r r--4x5">
-                    <div class="ro">
-                      <img src="/assets/demo-3.jpg" class="x">
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              <section class="pv200">
-                <div class="row">
-                  <div class="col-1"></div>
-                  <div class="col-4">
-                    <div class="r r--4x5">
-                      <div class="ro">
-                        <img src="/assets/demo-3.jpg" class="x">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-1"></div>
-                  <div class="col-6">
-                    <div class="r r--4x5">
-                      <div class="ro">
-                        <img src="/assets/demo-2.jpg" class="x">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-1"></div>
-                  <div class="col-3 ase">
-                    <div class="r r--4x5 oh">
-                      <div class="ro">
-                        <img src="/assets/demo-4.jpg" class="x">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-              
-              <section class="pt80">
-                <div class="r r--4x5 oh">
-                  <div class="ro wct">
-                    <img src="/assets/demo-8.jpg" class="x">
-                  </div>
-                </div>
-              </section>
+              {% endif %}
 
             </div>
           

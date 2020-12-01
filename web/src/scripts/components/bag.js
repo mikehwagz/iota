@@ -13,28 +13,10 @@ import {
 } from '@/util/shopify'
 
 export default component((node, ctx) => {
-  // let {
-  //   backdrop,
-  //   drawer,
-  //   wrap,
-  //   lineItems,
-  //   checkoutBtn,
-  //   totalWrap,
-  //   empty,
-  // } = choozy(node)
-  // let tl = gsap.timeline()
-  // let duration = 0.8
-  // let ease = 'power4.inOut'
-
-  // let focusTrap = createFocusTrap(node, {
-  //   initialFocus: qs('[data-initial-focus]', node),
-  //   escapeDeactivates: false,
-  // })
-
-  // on(checkoutBtn, 'click', () => {
-  //   let newTab = false
-  //   openCheckout(newTab)
-  // })
+  delegate(node, '.js-checkout', 'click', () => {
+    let newTab = false
+    openCheckout(newTab)
+  })
 
   delegate(node, '.js-remove', 'click', async (el, ev) => {
     let li = el.closest('.js-lineItem')
@@ -63,8 +45,8 @@ export default component((node, ctx) => {
     if (checkout.lineItems && checkout.lineItems.length) {
       let total = centsToPriceNoTrailingZeros(checkout.totalPrice)
       node.innerHTML = html`
-        <div class="pt35 ph30 df">
-          <div class="w65">
+        <div class="pt35 ph30">
+          <div class="w70">
             <header class="pl40 mb40">
               <div class="bb bw1 bc-white df">
                 <div class="w65 f28 lsn025em ttu lh100 pl25 pb15">Item</div>
@@ -155,7 +137,14 @@ export default component((node, ctx) => {
               </div>
             </footer>
           </div>
-          <div></div>
+          <div class="fix right bottom">
+            <button
+              class="btn btn--inverted serif f85 ba bc-white bw1 br50 ph30 pv35 js-checkout"
+              style="transform: rotate(-31deg);"
+            >
+              Checkout
+            </button>
+          </div>
         </div>
       `
     } else {
@@ -165,39 +154,3 @@ export default component((node, ctx) => {
     }
   }
 })
-
-/*<div class="w70 s:w65 pl15 s:pl25">
-                      <div class="df aib jcb sans f18 lh130 mb10">
-                        <p>
-                          ${centsToPriceNoTrailingZeros(item.variant.price)}
-                        </p>
-                      </div>
-                      <ul class="df mb20 s:mb45">
-                        ${item.variant.selectedOptions
-                          .map((option) =>
-                            option.name !== 'Title'
-                              ? `<li class="sans f14 lh117 ls04 ttu mr15">${option.name}: ${option.value}</li>`
-                              : ``,
-                          )
-                          .join('')}
-                      </ul>
-                      <div class="df aic jcb">
-                        <div class="qty-selector ba br8 pl5 sans f16 lh150">
-                          <button
-                            class="ph5 js-dec"
-                            data-id="${item.id}"
-                            aria-label="Decrease quantity"
-                          >
-                            -
-                          </button>
-                          <span>${item.quantity}</span>
-                          <button
-                            class="ph5 js-inc"
-                            data-id="${item.id}"
-                            aria-label="Increase quantity"
-                          >
-                            +
-                          </button>
-                        </div>
-                      </div>
-                    </div>*/

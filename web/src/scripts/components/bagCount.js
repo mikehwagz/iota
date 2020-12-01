@@ -1,7 +1,6 @@
 import { component } from 'picoapp'
 
 export default component((node, ctx) => {
-  console.log(ctx.getState())
   ctx.on('bag:update', render)
   render(ctx.getState())
 
@@ -14,9 +13,6 @@ export default component((node, ctx) => {
         0,
       )
     }
-
-    console.log(count)
-
     node.textContent = count
   }
 })
