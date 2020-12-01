@@ -13,32 +13,32 @@ import {
 } from '@/util/shopify'
 
 export default component((node, ctx) => {
-  delegate(node, '.js-checkout', 'click', () => {
+  let offCheckoutClick = delegate(node, '.js-checkout', 'click', () => {
     let newTab = false
     openCheckout(newTab)
   })
 
-  delegate(node, '.js-remove', 'click', async (el, ev) => {
+  let offRemoveClick = delegate(node, '.js-remove', 'click', async (el, ev) => {
     let li = el.closest('.js-lineItem')
     add(li, 'o65')
     await removeItemFromCheckout(el.dataset.id)
   })
 
-  delegate(node, '.js-inc', 'click', async (el) => {
+  let offIncrementClick = delegate(node, '.js-inc', 'click', async (el) => {
     let parent = el.parentNode
     add(parent, 'o65')
     await incrementItemQuantityFromCheckout(el.dataset.id)
     remove(parent, 'o65')
   })
 
-  delegate(node, '.js-dec', 'click', async (el) => {
+  let offDecrementClick = delegate(node, '.js-dec', 'click', async (el) => {
     let parent = el.parentNode
     add(parent, 'o65')
     await decrementItemQuantityFromCheckout(el.dataset.id)
     remove(parent, 'o65')
   })
 
-  delegate(node, '.js-shop', 'click', (el, ev) => {
+  let offShopClick = delegate(node, '.js-shop', 'click', (el, ev) => {
     ev.preventDefault()
     router.redirect(window.location.origin + el.getAttribute('href'))
   })
@@ -164,5 +164,13 @@ export default component((node, ctx) => {
         </div>
       `
     }
+  }
+
+  return () => {
+    offCheckoutClick()
+    offRemoveClick()
+    offIncrementClick()
+    offDecrementClick()
+    offShopClick()
   }
 })
