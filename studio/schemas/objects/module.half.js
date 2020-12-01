@@ -9,18 +9,6 @@ export default {
       type: 'a11yImage',
     },
     {
-      title: 'Image Size',
-      name: 'imageSize',
-      type: 'string',
-      options: {
-        layout: 'radio',
-        list: [
-          { title: 'Crop', value: 'cover' },
-          { title: 'Fit', value: 'contain' },
-        ],
-      },
-    },
-    {
       title: 'Has padding?',
       name: 'hasPadding',
       type: 'boolean',
@@ -38,4 +26,20 @@ export default {
       },
     },
   ],
+  preview: {
+    select: {
+      media: 'image.image',
+      imageAlignment: 'imageAlignment',
+      hasPadding: 'hasPadding',
+    },
+    prepare({ imageAlignment, hasPadding, ...selection }) {
+      return {
+        ...selection,
+        title: 'Half Width Image',
+        subtitle: `Align: ${imageAlignment} / Padding: ${
+          hasPadding ? 'yes' : 'no'
+        }`,
+      }
+    },
+  },
 }

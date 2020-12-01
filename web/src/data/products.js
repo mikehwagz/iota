@@ -7,6 +7,20 @@ module.exports = async function() {
       ...asset->
     },
     'shopify': content.shopify,
+    'secret': content.secret.layouts[] {
+      ...,
+      _type == 'module.half' => {
+        image {
+          altText,
+          ...image.asset->
+        },
+        hasPadding,
+        imageAlignment
+      },
+      _type == 'module.message' => {
+        text
+      }
+    },
     'title': content.main.title,
     'subtitle': content.main.subtitle,
     'slug': content.main.slug.current,

@@ -3,7 +3,10 @@ import { component } from 'picoapp'
 export default component((node, ctx) => {
   let p = node.firstElementChild
   let testEl = p.cloneNode(true)
-  let tag = 'PROCESSTHETRUST'
+  let tag = node.dataset.text
+    .split(' ')
+    .join('')
+    .toUpperCase()
   node.appendChild(testEl)
 
   node.style.width = '102%'
@@ -17,4 +20,6 @@ export default component((node, ctx) => {
     let repeated = testEl.textContent.trim().repeat(reps / 4)
     p.innerHTML = repeated + tag + repeated + tag + repeated + tag + repeated
   }
+
+  return () => {}
 })

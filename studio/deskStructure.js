@@ -11,10 +11,6 @@ export default () =>
         .icon(() => <Emoji style={{ fontSize: 30 }} text="📕" />)
         .child(S.documentTypeList('product').title('Products')),
       S.listItem()
-        .title('Collections')
-        .icon(() => <Emoji style={{ fontSize: 30 }} text="🥡" />)
-        .child(S.documentTypeList('collection').title('Collections')),
-      S.listItem()
         .title('Pages')
         .icon(() => <Emoji style={{ fontSize: 30 }} text="🗞️" />)
         .child(S.documentTypeList('page').title('Pages')),

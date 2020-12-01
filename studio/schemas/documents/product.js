@@ -186,12 +186,8 @@ export default {
               type: 'array',
               name: 'layouts',
               description:
-                'Each layout corresponds to a letter in the corner of the screen (i.e. the second layout is revealed by dragging the O in the upper right corner)',
-              of: [
-                { type: 'module.half' },
-                { type: 'module.full' },
-                { type: 'module.message' },
-              ],
+                'Each layout corresponds to a letter in the corner of the screen so I is top left, O is top right, T is bottom left, and A is bottom right.',
+              of: [{ type: 'module.half' }, { type: 'module.message' }],
             },
           ],
         },
