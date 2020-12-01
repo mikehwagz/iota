@@ -6,7 +6,7 @@ import Base from '@/renderers/Base'
 // transitions
 import Instant from '@/transitions/Instant'
 
-const H = new Highway.Core({
+export const router = new Highway.Core({
   renderers: {
     default: Base,
   },

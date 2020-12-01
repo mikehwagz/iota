@@ -1,9 +1,9 @@
 import { component } from 'picoapp'
-import choozy from 'choozy'
-import { qs, on, remove, add } from '@selfaware/martha'
+import { remove, add } from '@selfaware/martha'
 import html from '@/util/html'
 import delegate from '@/util/delegate'
 import centsToPriceNoTrailingZeros from '@/util/centsToPriceNoTrailingZeros'
+import { router } from '@/index'
 
 import {
   removeItemFromCheckout,
@@ -36,6 +36,11 @@ export default component((node, ctx) => {
     add(parent, 'o65')
     await decrementItemQuantityFromCheckout(el.dataset.id)
     remove(parent, 'o65')
+  })
+
+  delegate(node, '.js-shop', 'click', (el, ev) => {
+    ev.preventDefault()
+    router.redirect(window.location.origin + el.getAttribute('href'))
   })
 
   ctx.on('bag:update', render)
@@ -149,7 +154,14 @@ export default component((node, ctx) => {
       `
     } else {
       node.innerHTML = html`
-        <div>Empty</div>
+        <div class="pt40 ph30 df aib">
+          <p class="lsn025em mb40 mr20">Your bag is empty</p>
+          <a
+            class="btn btn--inverted serif ba bc-white bw1 br30 ph15 pv5 js-shop"
+            href="/"
+            >Shop Now</a
+          >
+        </div>
       `
     }
   }
