@@ -3,7 +3,7 @@
 // github for original package: https://github.com/mattdesl/simple-input-events
 
 import mitt from 'mitt'
-import { rect } from '@selfaware/martha'
+import { rect } from 'martha'
 
 export default function(opt) {
   const {

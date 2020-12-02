@@ -1,6 +1,6 @@
 import Highway from '@dogstudio/highway'
 import loadFonts from '@/lib/fontLoader'
-import { on, remove, size } from '@selfaware/martha'
+import { on, remove, size } from 'martha'
 import gsap from 'gsap'
 import app from '@/app'
 import { initCheckout } from '@/util/shopify'

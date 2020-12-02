@@ -1,6 +1,6 @@
 import { component } from 'picoapp'
 import choozy from 'choozy'
-import { on, add } from '@selfaware/martha'
+import { on, add } from 'martha'
 import gsap from 'gsap'
 
 export default component((node, ctx) => {

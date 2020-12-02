@@ -2012,11 +2012,6 @@
     "@sanity/util" "1.149.7"
     loader-utils "1.1.0"
 
-"@selfaware/martha@^0.0.11":
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/@selfaware/martha/-/martha-0.0.11.tgz#3b9ee92dd22001172b96162f9ca415a589d38c78"
-  integrity sha512-8qpcabQgalGI/4foX9FpS2btcQYUKw9QxXh8lnlqFz/O6pRLkyXJOJnZBYsW53amR5i7bum0TXeSKSMVFsRQkg==
-
 "@selfaware/wool@^1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@selfaware/wool/-/wool-1.0.3.tgz#77b7633fd7106dfce3a1e02782df08670a82d649"
@@ -8599,6 +8594,11 @@ markdown-it@^8.4.2:
     linkify-it "^2.0.0"
     mdurl "^1.0.1"
     uc.micro "^1.0.5"
+
+martha@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/martha/-/martha-1.0.2.tgz#a6679949b2a380320b29f0e311ae8469a58a47e2"
+  integrity sha512-pUwRu83hEXenbn3DQlWBszKI06Jp4QE7953mBlLgq5LKZiFKGXM9i4T+0/ndqTa6HfeXhTJXVe+rOaNz2n8gXw==
 
 math-expression-evaluator@^1.2.14:
   version "1.2.22"

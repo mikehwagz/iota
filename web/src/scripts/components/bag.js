@@ -1,5 +1,5 @@
 import { component } from 'picoapp'
-import { remove, add } from '@selfaware/martha'
+import { remove, add } from 'martha'
 import html from '@/util/html'
 import delegate from '@/util/delegate'
 import centsToPriceNoTrailingZeros from '@/util/centsToPriceNoTrailingZeros'
@@ -106,7 +106,9 @@ export default component((node, ctx) => {
                             alt="${item.variant.image.altText}"
                           />
                         </div>
-                        <h4 class="pl50 fg1 f36 lsn025em">${item.title}</h4>
+                        <h4 class="pl50 fg1 f36 pv20 lsn025em">
+                          ${item.title}
+                        </h4>
                       </div>
                       <div class="fg1">
                         <div class="qty-selector f36 lsn025em">

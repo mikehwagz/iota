@@ -1,5 +1,5 @@
 import { component } from 'picoapp'
-import { add, remove } from '@selfaware/martha'
+import { add, remove } from 'martha'
 
 export default component((node, ctx) => {
   const secrets = Array.from(node.children)

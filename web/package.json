@@ -17,11 +17,11 @@
   },
   "dependencies": {
     "@dogstudio/highway": "^2.2.1",
-    "@selfaware/martha": "^0.0.11",
     "@selfaware/wool": "^1.0.3",
     "choozy": "^0.0.6",
     "fontfaceobserver": "^2.1.0",
     "gsap": "^3.2.5",
+    "martha": "^1.0.2",
     "mitt": "^1.2.0",
     "picoapp": "^3.6.2",
     "shopify-buy": "^2.11.0",

@@ -1,5 +1,5 @@
 import choozy from 'choozy'
-import { on, add, remove, has } from '@selfaware/martha'
+import { on, add, remove, has } from 'martha'
 
 export default function squeezebox(
   node,

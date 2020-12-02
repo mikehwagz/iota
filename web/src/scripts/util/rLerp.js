@@ -1,4 +1,4 @@
-import { lerp, round } from '@selfaware/martha'
+import { lerp, round } from 'martha'
 
 export default function rLerp(c, t, e, p = 1000, f = 0.0001) {
   let v = round(lerp(c, t, e), p)

@@ -1,6 +1,6 @@
 import { component } from 'picoapp'
 import createPointerEvents from '@/lib/pointerEvents'
-import { has, add, remove, index } from '@selfaware/martha'
+import { has, add, remove, index } from 'martha'
 
 export default component((node, ctx) => {
   const pointerEvents = createPointerEvents({

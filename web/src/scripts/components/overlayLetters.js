@@ -1,5 +1,5 @@
 import { component } from 'picoapp'
-import { clamp } from '@selfaware/martha'
+import { clamp } from 'martha'
 import rLerp from '@/util/rLerp'
 
 export default component((node, ctx) => {

@@ -1,5 +1,5 @@
 import { component } from 'picoapp'
-import { add, rect, round, lerp, clamp } from '@selfaware/martha'
+import { add, rect, round, lerp, clamp } from 'martha'
 import rLerp from '@/util/rLerp'
 import { qsa } from '@/util'
 

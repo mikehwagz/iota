@@ -1,5 +1,5 @@
 import { component } from 'picoapp'
-import { lerp, clamp, round } from '@selfaware/martha'
+import { lerp, clamp, round } from 'martha'
 
 export default component((node, ctx) => {
   const inner = node.firstElementChild

@@ -1,5 +1,5 @@
 import { picoapp } from 'picoapp'
-import { size } from '@selfaware/martha'
+import { size } from 'martha'
 
 import overlay from '@/components/overlay'
 import overlayMask from '@/components/overlayMask'
@@ -12,7 +12,6 @@ import smooth from '@/components/smooth'
 import newsletter from '@/components/newsletter'
 import productThumb from '@/components/productThumb'
 import productForm from '@/components/productForm'
-import productQuickAdd from '@/components/productQuickAdd'
 import bag from '@/components/bag'
 import bagCount from '@/components/bagCount'
 import accordion from '@/components/accordion'
@@ -32,7 +31,6 @@ const components = {
   bag,
   bagCount,
   accordion,
-  productQuickAdd,
 }
 
 const state = {

@@ -1,4 +1,4 @@
-import { on } from '@selfaware/martha'
+import { on } from 'martha'
 
 export default function delegate(parent, selector, type, handler) {
   return on(parent, type, (ev) => {

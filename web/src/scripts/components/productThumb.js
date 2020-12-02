@@ -1,6 +1,6 @@
 import { component } from 'picoapp'
 import choozy from 'choozy'
-import { on, add, remove, wrap } from '@selfaware/martha'
+import { on, add, remove, wrap } from 'martha'
 
 export default component((node, ctx) => {
   let { images } = choozy(node)

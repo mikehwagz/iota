@@ -9,9 +9,6 @@ renderData:
   title: "{{ p.title }}"
 ---
 <div class="fix fill oh" data-router-view="default">
-  <div data-component="productQuickAdd">
-    <p class="serif">{{ p.shopify.defaultPrice | centsToPriceNoTrailingZeros }} — <button class="btn btn--text serif js-atc" type="submit" form="product-form">Add to Bag</button></p>
-  </div>
   <div class="abs fill-nav">
     <div class="rel x y">
 
@@ -92,6 +89,9 @@ renderData:
                         <li class="ph15">XL</li>
                       </ul> #}
                       <form id="product-form" data-component="productForm" data-id="{{ p.shopify.productId }}">
+                        <div class="js-quickAdd">
+                          <p class="serif">{{ p.shopify.defaultPrice | centsToPriceNoTrailingZeros }} — <button class="btn btn--text serif js-atc" type="submit" form="product-form">Add to Bag</button></p>
+                        </div>
                         <div class="df mb55">
                           <p class="serif mr30">{{ p.shopify.defaultPrice | centsToPriceNoTrailingZeros }}</p>
                           <button class="btn serif ba br30 ph15 js-atc">Add to Bag</button>
