@@ -2,10 +2,12 @@ import { component } from 'picoapp'
 import choozy from 'choozy'
 import { on, add } from 'martha'
 import gsap from 'gsap'
+import { subscribe } from 'klaviyo-subscribe'
 
 export default component((node, ctx) => {
   let { form, message } = choozy(node)
   let isSubmitting = false
+  let klaviyoListId = 'WEpWxM'
 
   let offSubmit = on(form, 'submit', (ev) => {
     ev.preventDefault()
@@ -15,13 +17,7 @@ export default component((node, ctx) => {
 
     showLoader()
 
-    fetch(
-      'https://script.google.com/macros/s/AKfycbxJom_Zs3Qp9t4HrMIN8wtElCYRiNmvgJ3NTHJ492U8MACASMg/exec',
-      {
-        method: 'POST',
-        body: new FormData(form),
-      },
-    )
+    subscribe(klaviyoListId, form.email.value, {})
       .then(() => {
         showMessage()
       })

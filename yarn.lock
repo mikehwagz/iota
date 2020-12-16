@@ -8067,6 +8067,11 @@ kind-of@^6.0.0, kind-of@^6.0.2:
   version "6.0.3"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.3.tgz#07c05034a6c349fa06e24fa35aa76db4580ce4dd"
 
+klaviyo-subscribe@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/klaviyo-subscribe/-/klaviyo-subscribe-1.0.0.tgz#e908fe03851bca5cf8d998fcc1d3d281f16be64f"
+  integrity sha512-7CJvKYU3fV8xfJ6hyafUJhUGupHL39IDpzpqn8i4fMmYCR1OW4Yi5p5mfE+oJW/UEbwg0U90lQsX6CiCXQ6zww==
+
 klaw-sync@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/klaw-sync/-/klaw-sync-4.0.0.tgz#7785692ea1a320ac3dda7a6c0c22b33a30aa3b3f"
