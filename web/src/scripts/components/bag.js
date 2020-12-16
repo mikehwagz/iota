@@ -108,6 +108,9 @@ export default component((node, ctx) => {
                         </div>
                         <h4 class="pl50 fg1 f36 pv20 lsn025em">
                           ${item.title}
+                          ${item.variant.title !== 'Default Title'
+                            ? ` / ${item.variant.title}`
+                            : ''}
                         </h4>
                       </div>
                       <div class="fg1">

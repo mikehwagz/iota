@@ -1,6 +1,7 @@
 import { component } from 'picoapp'
 import choozy from 'choozy'
 import { on, qs, remove, add } from 'martha'
+import centsToPriceNoTrailingZeros from '@/util/centsToPriceNoTrailingZeros'
 import { client, addItemToCheckout, openCheckout } from '@/util/shopify'
 import { encode, decode } from 'shopify-gid'
 import html from '@/util/html'
@@ -12,6 +13,7 @@ export default component((node, ctx) => {
 
   let headerLogo = qs('.js-headerLogo')
   let destinationWrapper = qs('.js-quickAddWrap')
+  let changeEvents = []
 
   remove(headerLogo, 'dib')
   add(headerLogo, 'dn')
@@ -25,10 +27,10 @@ export default component((node, ctx) => {
     accessToken: 'b906b8c00a63fd72aac3b15b19c83f7c',
   })
 
+  let decodedVariants = []
   let selectedVariant = null
 
   client.product.fetch(shopifyId).then((product) => {
-    let decodedVariants = []
     product.variants.forEach((variant) => {
       decodedVariants.push({
         ...variant,
@@ -39,10 +41,36 @@ export default component((node, ctx) => {
     let firstAvailableVariant = decodedVariants.find((v) => v.available)
     selectedVariant = firstAvailableVariant || decodedVariants[0]
 
+    if (refs.radios) {
+      refs.radios.forEach((radio) => {
+        if (parseInt(radio.value, 10) === selectedVariant.cleanId) {
+          radio.setAttribute('checked', '')
+        }
+      })
+    }
+
+    setVariant()
+
     if (!product.availableForSale) {
       setSoldOut()
     }
   })
+
+  if (refs.radios) {
+    refs.radios.forEach((radio) => {
+      let off = on(radio, 'change', (ev) => {
+        ev.preventDefault()
+
+        selectedVariant = decodedVariants.find(
+          (v) => v.cleanId === parseInt(node.variant.value, 10),
+        )
+
+        setVariant()
+      })
+
+      changeEvents.push(off)
+    })
+  }
 
   let offSubmit = on(node, 'submit', async (ev) => {
     ev.preventDefault()
@@ -65,7 +93,7 @@ export default component((node, ctx) => {
     offSubmit()
     offBagClick()
     offCheckout()
-
+    changeEvents.forEach((off) => off())
     remove(headerLogo, 'dn')
     add(headerLogo, 'dib')
     remove(destinationWrapper, 'db')
@@ -96,10 +124,24 @@ export default component((node, ctx) => {
         let parent = btn.parentNode
         parent.innerHTML = html`
           Added —
-          <a class="btn btn--text mr5 js-bag" href="/bag">View Bag</a> or
-          <button class="btn btn--text ml5 js-checkout">Checkout</button>
+          <a class="btn btn--text mr5 js-bag" href="/bag">View Bag</a>
         `
       }
     })
+  }
+
+  function setVariant() {
+    refs.price.forEach((el) => {
+      el.textContent = centsToPriceNoTrailingZeros(selectedVariant.price)
+    })
+
+    if (selectedVariant.available) {
+      refs.atc.forEach((btn) => {
+        btn.textContent = 'Add to Bag'
+        btn.removeAttribute('disabled')
+      })
+    } else {
+      setSoldOut()
+    }
   }
 })

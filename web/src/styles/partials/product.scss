@@ -1,0 +1,20 @@
+.product {
+  label {
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+  }
+
+  &__radio {
+    &:hover ~ label,
+    &:focus ~ label,
+    &:checked ~ label {
+      font-style: italic;
+    }
+
+    &:disabled ~ label {
+      pointer-events: none;
+      color: rgba($black, 0.4);
+      text-decoration: line-through;
+    }
+  }
+}

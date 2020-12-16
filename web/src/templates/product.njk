@@ -61,7 +61,7 @@ renderData:
                     {% endif %}
                   </div>
                   <div class="abs fill df jcc aic">
-                    <h1 class="serif f295 lh087 tc c-white">{{ p.title }}</h1>
+                    <h1 class="serif f295 lh087 tc c-white" style="text-shadow: 0px 4px 45px rgba(0, 0, 0, 0.25);">{{ p.title }}</h1>
                   </div>
                 </div>
               </section>
@@ -82,18 +82,32 @@ renderData:
                         {{ p.title }}<br>
                         {{ p.subtitle }}
                       </h1>
-                      {# <ul class="df ttu serif mhn15 mb25">
-                        <li class="ph15">S</li>
-                        <li class="ph15 i">M</li>
-                        <li class="ph15">L</li>
-                        <li class="ph15">XL</li>
-                      </ul> #}
-                      <form id="product-form" data-component="productForm" data-id="{{ p.shopify.productId }}">
+                        
+                      <form class="product" id="product-form" data-component="productForm" data-id="{{ p.shopify.productId }}">
+                        <div class="df ttu serif mhn15 mb25">
+                          {% if p.shopify.variants | length > 1 %}
+                            {% for variant in p.shopify.variants %}
+                              <div>
+                                <input
+                                  class="product__radio js-radios abs"
+                                  type="radio"
+                                  name="variant"
+                                  id="{{ variant.content.shopify.variantId }}"
+                                  value="{{ variant.content.shopify.variantId }}"
+                                  required
+                                >
+                                <label class="ph15" for="{{ variant.content.shopify.variantId }}">
+                                  {{ variant.content.shopify.variantTitle }}
+                                </label>
+                              </div>
+                            {% endfor %}
+                          {% endif %}
+                        </div>
                         <div class="js-quickAdd">
-                          <p class="serif">{{ p.shopify.defaultPrice | centsToPriceNoTrailingZeros }} — <button class="btn btn--text serif js-atc" type="submit" form="product-form">Add to Bag</button></p>
+                          <p class="serif"><span class="js-price">{{ p.shopify.defaultPrice | centsToPriceNoTrailingZeros }}</span> — <button class="btn btn--text serif js-atc" type="submit" form="product-form">Add to Bag</button></p>
                         </div>
                         <div class="df mb55">
-                          <p class="serif mr30">{{ p.shopify.defaultPrice | centsToPriceNoTrailingZeros }}</p>
+                          <p class="serif mr30 js-price">{{ p.shopify.defaultPrice | centsToPriceNoTrailingZeros }}</p>
                           <button class="btn serif ba br30 ph15 js-atc">Add to Bag</button>
                         </div>
                       </form>

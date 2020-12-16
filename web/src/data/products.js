@@ -6,7 +6,10 @@ module.exports = async function() {
     'thumbs': content.main.thumbnailHoverSequence[] {
       ...asset->
     },
-    'shopify': content.shopify,
+    'shopify': content.shopify {
+      ...,
+      variants[]->
+    },
     'secret': content.secret.layouts[] {
       ...,
       _type == 'module.half' => {
