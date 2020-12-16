@@ -11,19 +11,19 @@ renderData:
 <div class="abs fill" data-router-view="default">
   <a class="logo db fix bg-red z10" href="/">
     <div class="rel x y">
-      <div class="logo__letter f45 abs top left tc mt25 ml30">I</div>
-      <div class="logo__letter f45 abs top right tc mt25 mr30">O</div>
-      <div class="logo__letter f45 abs bottom left tc mb25 ml30">T</div>
-      <div class="logo__letter f45 abs bottom right tc mb25 mr30">A</div>
+      <div class="logo__letter f28 m:f45 abs top left tc mt20 m:mt25 ml15 m:ml30">I</div>
+      <div class="logo__letter f28 m:f45 abs top right tc mt20 m:mt25 mr15 m:mr30">O</div>
+      <div class="logo__letter f28 m:f45 abs bottom left tc mb20 m:mb25 ml15 m:ml30">T</div>
+      <div class="logo__letter f28 m:f45 abs bottom right tc mb20 m:mb25 mr15 m:mr30">A</div>
     </div>
   </a>
   <div class="x pb-nav" data-component="smooth">
-    <div class="pl160 pb20">
-      <div class="pl115 pt115">
+    <div class="m:pl160 pb20 m:pt0">
+      <div class="ph25 s:ph40 m:ph80 l:ph115 pt165 m:pt115">
         {% for section in p.sections %}
           <div id="{{ section.title | slug }}" class="x max-w892">
-            <h2 class="f45 ttu lsn025em mb20">{{ section.title }} +</h2>
-            <div class="rich-text serif f36 mb100">
+            <h2 class="f28 s:f35 l:f45 ttu lsn025em mb20">{{ section.title }} +</h2>
+            <div class="rich-text serif f24 s:f28 l:f36 mb100">
               {{ section.richText | blocksToHtml | safe }}
             </div>
           </div>

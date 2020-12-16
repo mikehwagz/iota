@@ -1,6 +1,11 @@
 .logo {
-  width: 16rem;
-  height: 16rem;
+  width: 11rem;
+  height: 11rem;
+
+  @media (query('m')) {
+    width: 16rem;
+    height: 16rem;
+  }
 
   &__letter {
     width: 3.2rem;
