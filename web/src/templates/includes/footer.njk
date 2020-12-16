@@ -1,15 +1,15 @@
-<footer class="bg-black c-white pt50 pl20 pr60 pb30 df jcb">
-  <div>
-    <div class="rel max-w880 mb40" data-component="newsletter">
-      <form class="df bb bc-white js-form">
+<footer class="bg-black c-white pt45 l:pt50 pl25 l:pl20 pr25 l:pr60 pb40 l:pb30 df jcb bt bc-white">
+  <div class="x l:mr80 xl:w75">
+    <div class="rel mb40" data-component="newsletter">
+      <form class="df fc m:fr tc m:tl js-form">
         <input
-          class="fg1 f45 lsn025em pb20"
+          class="fg1 f24 m:f35 xl:f45 lsn025em pb20 bb bc-white tc m:tl mb25 m:mb0"
           type="email"
           autocomplete="off"
           name="email"
           placeholder="{{ footer.newsletterSignup.placeholderText }}"
         />
-        <button class="f45 lsn025em ttu pb20" type="submit">
+        <button class="f28 m:f35 xl:f45 lsn025em ttu pb20 m:bb m:bc-white" type="submit">
           {{ footer.newsletterSignup.submitButtonText }}
         </button>
       </form>
@@ -19,13 +19,20 @@
         style="opacity: 0; visibility: hidden;"
       >{{ footer.newsletterSignup.successMessage }}</div>
     </div>
-    <nav>
-      {% for item in footer.menu %}
-        {% set link = item %}
-        {% set cx = 'f45 ttu lsn025em mr40' %}
-        {% include 'link.njk' %}
-      {% endfor %}
-    </nav>
+    <div class="df jcb aie">
+      <nav class="df fc l:fr">
+        {% for item in footer.menu %}
+          {% set link = item %}
+          {% set cx = 'db f28 m:f35 xl:f45 ttu lsn025em mb15 l:mb0 l:mr20 xl:mr40' if not loop.last else 'db f28 m:f35 xl:f45 ttu lsn025em' %}
+          {% include 'link.njk' %}
+        {% endfor %}
+      </nav>
+      <div class="db l:dn">
+        {% include 'mark.njk' %}
+      </div>
+    </div>
   </div>
-  {% include 'mark.njk' %}
+  <div class="dn l:db">
+    {% include 'mark.njk' %}
+  </div>
 </footer>

@@ -15,8 +15,7 @@ export default component((node, ctx) => {
   let destinationWrapper = qs('.js-quickAddWrap')
   let changeEvents = []
 
-  remove(headerLogo, 'dib')
-  add(headerLogo, 'dn')
+  headerLogo.style.display = 'none'
   refs.quickAdd.remove()
   destinationWrapper.append(refs.quickAdd)
   remove(destinationWrapper, 'dn')
@@ -89,16 +88,24 @@ export default component((node, ctx) => {
     openCheckout(newTab)
   })
 
+  ctx.on('resize', ({ ww }) => {
+    if (ww < 650) {
+      add(document.body, 'is-pdp')
+    } else {
+      remove(document.body, 'is-pdp')
+    }
+  })
+
   return () => {
     offSubmit()
     offBagClick()
     offCheckout()
     changeEvents.forEach((off) => off())
-    remove(headerLogo, 'dn')
-    add(headerLogo, 'dib')
+    headerLogo.removeAttribute('style')
     remove(destinationWrapper, 'db')
     add(destinationWrapper, 'dn')
     refs.quickAdd.remove()
+    remove(document.body, 'is-pdp')
   }
 
   function setSoldOut() {

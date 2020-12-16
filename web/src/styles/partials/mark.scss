@@ -1,3 +1,7 @@
 .mark {
-  width: 14.5rem;
+  width: 7rem;
+
+  @media (query('s')) {
+    width: 14.5rem;
+  }
 }

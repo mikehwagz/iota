@@ -104,7 +104,7 @@ renderData:
                           {% endif %}
                         </div>
                         <div class="js-quickAdd">
-                          <p class="serif"><span class="js-price">{{ p.shopify.defaultPrice | centsToPriceNoTrailingZeros }}</span> — <button class="btn btn--text serif js-atc" type="submit" form="product-form">Add to Bag</button></p>
+                          <p class="serif f28 m:f45"><span class="js-price">{{ p.shopify.defaultPrice | centsToPriceNoTrailingZeros }}</span> — <button class="btn btn--text serif js-atc" type="submit" form="product-form">Add to Bag</button></p>
                         </div>
                         <div class="df mb55">
                           <p class="serif mr30 js-price">{{ p.shopify.defaultPrice | centsToPriceNoTrailingZeros }}</p>
@@ -154,7 +154,8 @@ renderData:
                   <h1 class="serif f48 lh117">{{ p.title }}</h1>
                 </div>
               {% endif %}
-
+              
+              {% include 'footer.njk' %}
             </div>
           
           {# MASK END #}
