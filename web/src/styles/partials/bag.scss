@@ -1,0 +1,9 @@
+.bag {
+  &__checkout {
+    transform: rotate(-11deg);
+
+    @media (query('xl')) {
+      transform: rotate(-31deg);
+    }
+  }
+}

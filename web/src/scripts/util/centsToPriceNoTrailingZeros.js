@@ -1,9 +1,9 @@
-export default function centsToPriceNoTrailingZeros(cents) {
+export default function centsToPriceNoTrailingZeros(cents, qty = 1) {
   if (typeof cents === 'string') {
     cents = cents.replace('.', '')
   }
 
-  const price = cents / 100
+  const price = (cents / 100) * qty
 
   if (price % 1 === 0) {
     return `$${price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}`

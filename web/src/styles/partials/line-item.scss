@@ -1,9 +1,11 @@
-.line-item {
-  &__remove {
-    opacity: 0;
+@media (query('s')) {
+  .line-item {
+    &__remove {
+      opacity: 0;
 
-    .line-item:hover & {
-      opacity: 1;
+      .line-item:hover & {
+        opacity: 1;
+      }
     }
   }
 }

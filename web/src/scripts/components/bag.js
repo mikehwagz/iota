@@ -51,12 +51,20 @@ export default component((node, ctx) => {
       let total = centsToPriceNoTrailingZeros(checkout.totalPrice)
       node.innerHTML = html`
         <div class="pt35 ph30">
-          <div class="w70">
-            <header class="pl40 mb40">
+          <div class="xl:w70">
+            <header class="pl20 s:pl30 xl:pl40 mb30 m:mb40">
               <div class="bb bw1 bc-white df">
-                <div class="w65 f28 lsn025em ttu lh100 pl25 pb15">Item</div>
-                <div class="fg1 f28 lsn025em ttu lh100 pb15">Qty</div>
-                <div class="f28 lsn025em ttu lh100 pr20 pb15">Price</div>
+                <div
+                  class="w65 f18 s:f24 m:f28 lsn025em ttu lh100 s:pl15 l:pl25 pb15"
+                >
+                  Item
+                </div>
+                <div class="fg1 f18 s:f24 m:f28 lsn025em ttu lh100 pb15">
+                  Qty
+                </div>
+                <div class="f18 s:f24 m:f28 lsn025em ttu lh100 l:pr20 pb15">
+                  Price
+                </div>
               </div>
             </header>
             <ul>
@@ -65,16 +73,17 @@ export default component((node, ctx) => {
                   return html`
                     <li
                       id="${item.id}"
-                      class="line-item df aic mb35 js-lineItem"
+                      class="line-item df aic mb25 m:mb35 js-lineItem"
                     >
                       <button
-                        class="line-item__remove pr35 df aic js-remove"
+                        class="line-item__remove l:pr25 xl:pr35 df aic js-remove"
                         data-id="${item.id}"
                         aria-label="Remove ${item.quantity > 1
                           ? 'items'
                           : 'item'} from Bag"
                       >
                         <svg
+                          class="dn s:db"
                           width="17"
                           height="17"
                           viewBox="0 0 17 17"
@@ -97,16 +106,42 @@ export default component((node, ctx) => {
                             fill="white"
                           />
                         </svg>
+                        <svg
+                          class="db s:dn"
+                          width="10"
+                          height="10"
+                          viewBox="0 0 17 17"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <rect
+                            y="1.67871"
+                            width="2.37397"
+                            height="21.3657"
+                            transform="rotate(-45 0 1.67871)"
+                            fill="white"
+                          />
+                          <rect
+                            x="1.67871"
+                            y="16.7866"
+                            width="2.37397"
+                            height="21.3657"
+                            transform="rotate(-135 1.67871 16.7866)"
+                            fill="white"
+                          />
+                        </svg>
                       </button>
                       <div class="df aic w60">
-                        <div class="w20">
+                        <div class="dn l:db w20">
                           <img
                             class="x"
                             src="${item.variant.image.src}"
                             alt="${item.variant.image.altText}"
                           />
                         </div>
-                        <h4 class="pl50 fg1 f36 pv20 lsn025em">
+                        <h4
+                          class="pl10 s:pl25 xl:pl50 fg1 f18 s:f28 m:f36 l:pv20 lsn025em"
+                        >
                           ${item.title}
                           ${item.variant.title !== 'Default Title'
                             ? ` / ${item.variant.title}`
@@ -114,7 +149,7 @@ export default component((node, ctx) => {
                         </h4>
                       </div>
                       <div class="fg1">
-                        <div class="qty-selector f36 lsn025em">
+                        <div class="qty-selector f18 s:f28 m:f36 lsn025em">
                           <button
                             class="ph5 js-dec"
                             data-id="${item.id}"
@@ -132,25 +167,33 @@ export default component((node, ctx) => {
                           </button>
                         </div>
                       </div>
-                      <p class="f36 lsn025em pr20">
-                        ${centsToPriceNoTrailingZeros(item.variant.price)}
+                      <p class="f18 s:f28 m:f36 lsn025em l:pr20">
+                        ${centsToPriceNoTrailingZeros(
+                          item.variant.price,
+                          item.quantity,
+                        )}
                       </p>
                     </li>
                   `
                 })
                 .join('')}
             </ul>
-            <footer class="pl40 mb40">
+            <footer class="pl20 s:pl30 xl:pl40 mb40">
               <div class="bt bw1 bc-white df jcb">
-                <div class="f36 lsn025em ttu lh100 pl25 pt25">Subtotal</div>
-                <div class="f36 lsn025em ttu lh100 pr20 pt25">${total}</div>
+                <div
+                  class="f18 s:f28 m:f36 lsn025em ttu lh100 s:pl15 l:pl25 pt25"
+                >
+                  Subtotal
+                </div>
+                <div class="f18 s:f28 m:f36 lsn025em ttu lh100 l:pr20 pt25">
+                  ${total}
+                </div>
               </div>
             </footer>
           </div>
-          <div class="fix right bottom">
+          <div class="df jcc xl:db xl:fix right bottom pl25 s:pl0">
             <button
-              class="btn btn--inverted serif f85 ba bc-white bw1 br50 ph30 pv35 js-checkout"
-              style="transform: rotate(-31deg);"
+              class="bag__checkout btn btn--inverted serif f55 s:f85 ba bc-white bw1 br50 ph30 pv20 s:pv35 js-checkout"
             >
               Checkout
             </button>
