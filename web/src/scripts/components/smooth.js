@@ -1,7 +1,6 @@
 import { component } from 'picoapp'
-import { add, rect, round, lerp, clamp } from 'martha'
+import { qs, qsa, add, rect, round, lerp, clamp, remove } from 'martha'
 import rLerp from '@/util/rLerp'
-import { qsa } from '@/util'
 
 export default component((node, ctx) => {
   let sh = null
@@ -9,56 +8,73 @@ export default component((node, ctx) => {
   let cy = 0
   let ease = 0.15
   let cache = []
+  let hasClasses = true
 
+  let inner = qs('[data-inner]', node)
   let stickyEls = qsa('[data-sticky]', node)
-  let prlxEls = qsa('[data-prlx]', node)
+  // let prlxEls = qsa('[data-prlx]', node)
 
-  add(node, 'fix', 'top', 'fill-x', 'wct')
   ctx.on('resize', resize)
   ctx.on('tick', update)
 
-  function resize() {
-    sh = rect(node).height
-    document.body.style.height = sh + 'px'
+  function resize({ ww }) {
+    if (ww >= 650) {
+      if (!hasClasses) {
+        remove(node, 'oy')
+        hasClasses = true
+      }
 
-    node.style.transform = translateY(0)
-    cache = stickyEls
-      .map((el) => {
-        el.style.transform = translateY(0)
-        let container = el.closest('[data-sticky-container]') ?? document.body
-        return {
-          el,
-          type: 'sticky',
-          rect: rect(el),
-          container: {
-            el: container,
-            rect: rect(container),
-          },
-        }
-      })
-      .concat(
-        prlxEls.map((el) => {
-          el.style.transform = translateY(0)
-          return {
-            el,
-            type: 'prlx',
-            vars: JSON.parse(el.dataset.prlx),
-            rect: rect(el),
-            progress: {
-              current: 0,
-              target: 0,
-            },
-          }
-        }),
-      )
+      sh = rect(inner).height
+      document.body.style.height = sh + 'px'
+      setCache()
+    } else {
+      if (hasClasses) {
+        add(node, 'oy')
+        hasClasses = false
+      }
+
+      document.body.removeAttribute('style')
+    }
   }
 
-  function update({ wh }) {
+  function setCache() {
+    inner.style.transform = translateY(0)
+    cache = stickyEls.map((el) => {
+      el.style.transform = translateY(0)
+      let container = el.closest('[data-sticky-container]') ?? document.body
+      return {
+        el,
+        type: 'sticky',
+        rect: rect(el),
+        container: {
+          el: container,
+          rect: rect(container),
+        },
+      }
+    })
+    // .concat(
+    //   prlxEls.map((el) => {
+    //     el.style.transform = translateY(0)
+    //     return {
+    //       el,
+    //       type: 'prlx',
+    //       vars: JSON.parse(el.dataset.prlx),
+    //       rect: rect(el),
+    //       progress: {
+    //         current: 0,
+    //         target: 0,
+    //       },
+    //     }
+    //   }),
+    // )
+  }
+
+  function update() {
     ty = pageYOffset
 
     cy = rLerp(cy, ty, ease, 100, 0.1)
 
-    node.style.transform = translateY(-cy)
+    inner.style.transform = translateY(-cy)
 
     for (let i = 0; i < cache.length; i++) {
       let entry = cache[i]
@@ -67,9 +83,9 @@ export default component((node, ctx) => {
         case 'sticky':
           sticky({ ...entry, cy })
           break
-        case 'prlx':
-          prlx({ ...entry, ty, wh, ease })
-          break
+        // case 'prlx':
+        //   prlx({ ...entry, ty, wh, ease })
+        //   break
         default:
           break
       }
@@ -106,52 +122,52 @@ function sticky({ el, rect, container, cy }) {
   }
 }
 
-function prlx({ el, rect, vars, progress, ty, wh, ease }) {
-  progress.target = 1 - clamp((rect.bottom - ty) / (wh + rect.height), 0, 1)
-  progress.current = lerp(progress.current, progress.target, vars.ease ?? ease)
+// function prlx({ el, rect, vars, progress, ty, wh, ease }) {
+//   progress.target = 1 - clamp((rect.bottom - ty) / (wh + rect.height), 0, 1)
+//   progress.current = lerp(progress.current, progress.target, vars.ease ?? ease)
 
-  let keys = Object.keys(vars)
-  let transforms = []
+//   let keys = Object.keys(vars)
+//   let transforms = []
 
-  for (let i = 0; i < keys.length; i++) {
-    let key = keys[i]
-    let val = vars[key]
+//   for (let i = 0; i < keys.length; i++) {
+//     let key = keys[i]
+//     let val = vars[key]
 
-    val = Array.isArray(val) ? val : [key === 'scale' ? 1 : 0, val]
+//     val = Array.isArray(val) ? val : [key === 'scale' ? 1 : 0, val]
 
-    let [from, to] = val
+//     let [from, to] = val
 
-    switch (key) {
-      case 'scale':
-        transforms.push(
-          scale(round(from + progress.current * (to - from), 1000)),
-        )
-        break
-      case 'rotate':
-        transforms.push(
-          rotate(round(from + progress.current * (to - from), 100)),
-        )
-        break
-      case 'y':
-        transforms.push(
-          translateY(round(from + progress.current * (to - from), 100)),
-        )
-        break
-      default:
-        break
-    }
+//     switch (key) {
+//       case 'scale':
+//         transforms.push(
+//           scale(round(from + progress.current * (to - from), 1000)),
+//         )
+//         break
+//       case 'rotate':
+//         transforms.push(
+//           rotate(round(from + progress.current * (to - from), 100)),
+//         )
+//         break
+//       case 'y':
+//         transforms.push(
+//           translateY(round(from + progress.current * (to - from), 100)),
+//         )
+//         break
+//       default:
+//         break
+//     }
 
-    el.style.transform = transforms.join(' ')
-  }
-}
+//     el.style.transform = transforms.join(' ')
+//   }
+// }
 
-function rotate(a) {
-  return `rotate(${a}deg)`
-}
+// function rotate(a) {
+//   return `rotate(${a}deg)`
+// }
 
-function scale(x) {
-  return `scale(${x})`
-}
+// function scale(x) {
+//   return `scale(${x})`
+// }
 
 function translateY(y) {
   return `translate3d(0, ${y}px, 0)`

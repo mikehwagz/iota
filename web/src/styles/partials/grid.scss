@@ -20,6 +20,12 @@ $gutter: 2rem;
 
 @each $prefix, $query in $media-queries {
   @media ($query) {
+    .#{$prefix}\:row {
+      display: grid;
+      grid-template-columns: repeat($column-count, 1fr);
+      column-gap: $gutter;
+    }
+
     @for $i from 1 through $column-count {
       .#{$prefix}\:col-#{$i} {
         grid-column-end: span #{$i};

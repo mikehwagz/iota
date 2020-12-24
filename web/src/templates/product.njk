@@ -19,143 +19,145 @@ renderData:
         <div class="overlay__mask x y oh wct" data-component="overlayMask">
           <div class="x y">
           {# MASK START #}
-            <div class="mb-nav bg-white wct" data-component="smooth">
-
-              {# Hero #}
-              <section class="x vh100-nav--2x bg-white wct" data-sticky-container>
-                <div class="rel x vh100-nav">
-                  <div class="x y" data-sticky>
-                    {% if p.hero.landscape.mediaType == 'video' %}
-                      <video
-                        class="x y o-cover landscape"
-                        src="{{ p.hero.landscape.video.url }}#t=0.1"
-                        autoplay
-                        playsinline
-                        muted
-                        loop
-                        preload="auto"
-                      ></video>
-                    {% else %}
-                      <img
-                        class="x y o-cover landscape"
-                        src="{{ p.hero.landscape.image.url }}"
-                        alt="{{ p.hero.landscape.image.altText }}"
-                      >
-                    {% endif %}
-                    {% if p.hero.landscape.mediaType == 'video' %}
-                      <video
-                        class="x y o-cover portrait"
-                        src="{{ p.hero.portrait.video.url }}#t=0.1"
-                        autoplay
-                        playsinline
-                        muted
-                        loop
-                        preload="auto"
-                      ></video>
-                    {% else %}
-                      <img
-                        class="x y o-cover portrait"
-                        src="{{ p.hero.portrait.image.url }}"
-                        alt="{{ p.hero.portrait.image.altText }}"
-                      >
-                    {% endif %}
-                  </div>
-                  <div class="abs fill df jcc aic">
-                    <h1 class="serif f295 lh087 tc c-white" style="text-shadow: 0px 4px 45px rgba(0, 0, 0, 0.25);">{{ p.title }}</h1>
-                  </div>
-                </div>
-              </section>
-
-              {# Product Detail #}
-              <section class="row" data-sticky-container>
-                <div class="col-8">
-                  {% for image in p.images %}
-                    <div class="x vh100-nav oh">
-                      <img src="{{ image.url }}" alt="{{ image.altText }}" class="db x y o-cover">
+            <div class="bg-white fix top fill" data-component="smooth">
+              <div class="s:mb-nav wct" data-inner>
+                {# Hero #}
+                <section class="x bg-white wct" data-sticky-container>
+                  <div class="rel x vh100-nav">
+                    <div class="x y" data-sticky>
+                      {% if p.hero.landscape.mediaType == 'video' %}
+                        <video
+                          class="x y o-cover landscape"
+                          src="{{ p.hero.landscape.video.url }}#t=0.1"
+                          autoplay
+                          playsinline
+                          muted
+                          loop
+                          preload="auto"
+                        ></video>
+                      {% else %}
+                        <img
+                          class="x y o-cover landscape"
+                          src="{{ p.hero.landscape.image.url }}"
+                          alt="{{ p.hero.landscape.image.altText }}"
+                        >
+                      {% endif %}
+                      {% if p.hero.landscape.mediaType == 'video' %}
+                        <video
+                          class="x y o-cover portrait"
+                          src="{{ p.hero.portrait.video.url }}#t=0.1"
+                          autoplay
+                          playsinline
+                          muted
+                          loop
+                          preload="auto"
+                        ></video>
+                      {% else %}
+                        <img
+                          class="x y o-cover portrait"
+                          src="{{ p.hero.portrait.image.url }}"
+                          alt="{{ p.hero.portrait.image.altText }}"
+                        >
+                      {% endif %}
                     </div>
-                  {% endfor %}
-                </div>
-                <div class="col-7">
-                  <div class="vh100-nav df aic" data-sticky>
-                    <div class="pt30 pl10 pr30 f45 lh120 lsn025em">
-                      <h1 class="mb25">
-                        {{ p.title }}<br>
-                        {{ p.subtitle }}
-                      </h1>
-                        
-                      <form class="product" id="product-form" data-component="productForm" data-id="{{ p.shopify.productId }}">
-                        <div class="df ttu serif mhn15 mb25">
-                          {% if p.shopify.variants | length > 1 %}
-                            {% for variant in p.shopify.variants %}
-                              <div>
-                                <input
-                                  class="product__radio js-radios abs"
-                                  type="radio"
-                                  name="variant"
-                                  id="{{ variant.content.shopify.variantId }}"
-                                  value="{{ variant.content.shopify.variantId }}"
-                                  required
-                                >
-                                <label class="ph15" for="{{ variant.content.shopify.variantId }}">
-                                  {{ variant.content.shopify.variantTitle }}
-                                </label>
-                              </div>
-                            {% endfor %}
-                          {% endif %}
-                        </div>
-                        <div class="js-quickAdd">
-                          <p class="serif f28 m:f45"><span class="js-price">{{ p.shopify.defaultPrice | centsToPriceNoTrailingZeros }}</span> — <button class="btn btn--text serif js-atc" type="submit" form="product-form">Add to Bag</button></p>
-                        </div>
-                        <div class="df mb55">
-                          <p class="serif mr30 js-price">{{ p.shopify.defaultPrice | centsToPriceNoTrailingZeros }}</p>
-                          <button class="btn serif ba br30 ph15 js-atc">Add to Bag</button>
-                        </div>
-                      </form>
-                      {% if p.details %}
-                        <div class="accordion" data-component="accordion">
-                          <div>
-                            <button class="accordion__header pb10 tl df aic js-headers">
-                              <h2 class="sans f36 lsn025em ttu mr15">Details</h2>
-                              <div class="accordion__arrow df aic">
-                                <svg width="22" height="23" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                  <path fill-rule="evenodd" clip-rule="evenodd" d="M1.74845e-07 11L0 13C5.52285 13 10 17.4772 10 23H12C12 17.4772 16.4772 13 22 13V11C17.8261 11 14.1498 13.131 12 16.3644L12 1.74845e-07L10 0L10 16.3644C7.85016 13.131 4.17394 11 1.74845e-07 11Z" fill="black"/>
-                                </svg>
-                              </div>
-                            </button>
+                    <div class="abs fill df jcc aic">
+                      <h1 class="serif f85 s:f295 lh087 tc c-white" style="text-shadow: 0px 4px 45px rgba(0, 0, 0, 0.25);">{{ p.title }}</h1>
+                    </div>
+                  </div>
+                  <div class="vh100-nav dn s:db"></div>
+                </section>
+
+                {# Product Detail #}
+                <section class="s:row" data-sticky-container>
+                  <div class="col-7">
+                    <div class="s:vh100-nav df aic" data-sticky>
+                      <div class="pt35 s:pt30 pb55 s:pb0 pl25 s:pl10 pr25 s:pr30 f28 s:f45 lh120 lsn025em">
+                        <h1 class="mb10 s:mb25">
+                          {{ p.title }}<br>
+                          {{ p.subtitle }}
+                        </h1>
+                          
+                        <form class="product" id="product-form" data-component="productForm" data-id="{{ p.shopify.productId }}">
+                          <div class="df ttu serif mhn15 mb25">
+                            {% if p.shopify.variants | length > 1 %}
+                              {% for variant in p.shopify.variants %}
+                                <div>
+                                  <input
+                                    class="product__radio js-radios abs"
+                                    type="radio"
+                                    name="variant"
+                                    id="{{ variant.content.shopify.variantId }}"
+                                    value="{{ variant.content.shopify.variantId }}"
+                                    required
+                                  >
+                                  <label class="ph15" for="{{ variant.content.shopify.variantId }}">
+                                    {{ variant.content.shopify.variantTitle }}
+                                  </label>
+                                </div>
+                              {% endfor %}
+                            {% endif %}
                           </div>
-                          <div class="accordion__panel js-panels">
-                            <div class="accordion__panel-inner js-inners">
-                              <div class="ls0 serif f28">
-                                {{ p.details | blocksToHtml | safe }}
+                          <div class="js-quickAdd">
+                            <p class="serif f28 m:f45"><span class="js-price">{{ p.shopify.defaultPrice | centsToPriceNoTrailingZeros }}</span> — <button class="btn btn--text serif js-atc" type="submit" form="product-form">Add to Bag</button></p>
+                          </div>
+                          <div class="df mb55">
+                            <p class="serif mr30 js-price">{{ p.shopify.defaultPrice | centsToPriceNoTrailingZeros }}</p>
+                            <button class="btn serif ba br30 ph15 js-atc">Add to Bag</button>
+                          </div>
+                        </form>
+                        {% if p.details %}
+                          <div class="accordion" data-component="accordion">
+                            <div>
+                              <button class="accordion__header pb10 tl df aic js-headers">
+                                <h2 class="sans f28 s:f36 lsn025em ttu mr15">Details</h2>
+                                <div class="accordion__arrow df aic">
+                                  <svg width="22" height="23" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.74845e-07 11L0 13C5.52285 13 10 17.4772 10 23H12C12 17.4772 16.4772 13 22 13V11C17.8261 11 14.1498 13.131 12 16.3644L12 1.74845e-07L10 0L10 16.3644C7.85016 13.131 4.17394 11 1.74845e-07 11Z" fill="black"/>
+                                  </svg>
+                                </div>
+                              </button>
+                            </div>
+                            <div class="accordion__panel js-panels">
+                              <div class="accordion__panel-inner js-inners">
+                                <div class="ls0 serif f18 s:f28">
+                                  {{ p.details | blocksToHtml | safe }}
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      {% endif %}
+                        {% endif %}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </section>
+                  <div class="col-8 on1">
+                    {% for image in p.images %}
+                      <div class="x vh100-nav oh">
+                        <img src="{{ image.url }}" alt="{{ image.altText }}" class="db x y o-cover">
+                      </div>
+                    {% endfor %}
+                  </div>
+                </section>
 
-              {% if p.modules.length %}
-                {% for module in p.modules %}
-                  {% set type = module._type %}
-                  {% set moduleTemplate %}
-                    {% include type + '.njk' ignore missing %}
-                  {% endset %}
-                  {% if moduleTemplate | trim | length %}
-                    {{ moduleTemplate | safe }}
-                  {% else %}
-                    {% debug module %}
-                  {% endif %}
-                {% endfor %}
-              {% else %}
-                <div class="ph40 pt60 vh100-nav">
-                  <h1 class="serif f48 lh117">{{ p.title }}</h1>
-                </div>
-              {% endif %}
-              
-              {% include 'footer.njk' %}
+                {% if p.modules.length %}
+                  {% for module in p.modules %}
+                    {% set type = module._type %}
+                    {% set moduleTemplate %}
+                      {% include type + '.njk' ignore missing %}
+                    {% endset %}
+                    {% if moduleTemplate | trim | length %}
+                      {{ moduleTemplate | safe }}
+                    {% else %}
+                      {% debug module %}
+                    {% endif %}
+                  {% endfor %}
+                {% else %}
+                  <div class="ph40 pt60 vh100-nav">
+                    <h1 class="serif f48 lh117">{{ p.title }}</h1>
+                  </div>
+                {% endif %}
+                
+                {% include 'footer.njk' %}
+              </div>
             </div>
           
           {# MASK END #}

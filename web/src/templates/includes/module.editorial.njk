@@ -1,17 +1,17 @@
-<section class="row" data-sticky-container>
-  <div class="col-8">
+<section class="s:row" data-sticky-container>
+  <div class="col-7">
+    <div class="pt35 s:pt30 pl25 s:pl10 pr25 s:pr30 pb55 s:pb80 lh120 lsn025em" data-sticky>
+      <div class="f24 s:f35 lh111 ls0 serif rte">
+        {{ module.editorial | blocksToHtml | safe }}
+      </div>
+    </div>
+  </div>
+  <div class="col-8 on1">
     <img
       src="{{ module.image.url }}"
       alt="{{ module.image.altText }}"
       class="db x vh100-nav o-cover"
       data-sticky
     >
-  </div>
-  <div class="col-7">
-    <div class="pt30 pl10 pr30 pb80 f45 lh120 lsn025em" data-sticky>
-      <div class="f35 lh111 ls0 serif rte">
-        {{ module.editorial | blocksToHtml | safe }}
-      </div>
-    </div>
   </div>
 </section>
