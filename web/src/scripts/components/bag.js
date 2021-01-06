@@ -202,10 +202,12 @@ export default component((node, ctx) => {
       `
     } else {
       node.innerHTML = html`
-        <div class="pt40 ph30 df aib">
-          <p class="lsn025em mb40 mr20">Your bag is empty</p>
+        <div class="pt40 ph20 s:ph30 l:df aib">
+          <p class="f28 m:f36 l:f45 lsn025em mb40 mr20">
+            Your bag is empty
+          </p>
           <a
-            class="btn btn--inverted serif ba bc-white bw1 br30 ph15 pv5 js-shop"
+            class="btn btn--inverted serif ba bc-white bw1 br30 ph15 pv5 f28 m:f36 l:f45 js-shop"
             href="/"
             >Shop Now</a
           >

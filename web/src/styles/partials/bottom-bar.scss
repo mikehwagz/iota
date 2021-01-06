@@ -1,0 +1,7 @@
+.bottom-bar {
+  height: 4.9rem;
+
+  @media (query('m')) {
+    height: 6.6rem;
+  }
+}

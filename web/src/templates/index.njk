@@ -11,38 +11,40 @@ title: Home
       <div class="logo__letter f28 m:f45 abs bottom right tc mb20 m:mb25 mr15 m:mr30">A</div>
     </div>
   </a>
-  <div class="x pb-nav" data-component="smooth">
-    <div class="m:pl160 pb20 min-vh100">
-      <div class="ph25 xs:ph40 s:ph60 m:ph80 l:ph115 pt125 m:pt80">
-        {% set cls = cycler("odd", "even") %}
-        {% for product in products %}
-          <a
-            class="{% classNames
-              'db s:w80 m:w80 l:w65 xl:w55 mb50',
-              'mla' if cls.next() == 'even'
-            %}"
-            href="/products/{{ product.slug }}"
-            data-component="productThumb"
-          >
-            <div class="r" style="padding-top: {{ 1 / product.thumbs[0].metadata.dimensions.aspectRatio * 100 }}%">
-              {% for image in product.thumbs %}
-                <div
-                  class="{% classNames
-                    'ro js-images',
-                    'o0' if not loop.first
-                  %}"
-                >
-                  <img src="{{ image.url }}" alt="" class="x y o-cover">
-                </div>
-              {% endfor %}
-            </div>
-            <h2 class="f18 s:f24 lsn025em tc">
-              {{ product.title }}, {{ product.shopify.defaultPrice | centsToPriceNoTrailingZeros }}
-            </h2>
-          </a>
-        {% endfor %}
+  <div class="bg-white fix top fill pb-nav" data-component="smooth">
+    <div class="s:mb-nav wct" data-inner>
+      <div class="m:pl160 pb20 min-vh100">
+        <div class="ph25 xs:ph40 s:ph60 m:ph80 l:ph115 pt125 m:pt80">
+          {% set cls = cycler("odd", "even") %}
+          {% for product in products %}
+            <a
+              class="{% classNames
+                'db s:w80 m:w80 l:w65 xl:w55 mb50',
+                'mla' if cls.next() == 'even'
+              %}"
+              href="/products/{{ product.slug }}"
+              data-component="productThumb"
+            >
+              <div class="r" style="padding-top: {{ 1 / product.thumbs[0].metadata.dimensions.aspectRatio * 100 }}%">
+                {% for image in product.thumbs %}
+                  <div
+                    class="{% classNames
+                      'ro js-images',
+                      'o0' if not loop.first
+                    %}"
+                  >
+                    <img src="{{ image.url }}" alt="" class="x y o-cover">
+                  </div>
+                {% endfor %}
+              </div>
+              <h2 class="f18 s:f24 lsn025em tc">
+                {{ product.title }}, {{ product.shopify.defaultPrice | centsToPriceNoTrailingZeros }}
+              </h2>
+            </a>
+          {% endfor %}
+        </div>
       </div>
+      {% include 'footer.njk' %}
     </div>
-    {% include 'footer.njk' %}
   </div>
 </div>

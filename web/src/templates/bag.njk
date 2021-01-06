@@ -3,13 +3,15 @@ layout: base.njk
 title: Bag
 ---
 <div class="abs fill bg-black c-white" data-router-view="default">
-  <div class="x" data-component="smooth">
-    <header class="df jcb ph20">
-      <h1 class="serif f126 m:f196 lsn025em">Bag—</h1>
-      <div class="dn s:db pt30">
-        {% include 'mark.njk' %}
-      </div>
-    </header>
-    <div data-component="bag"></div>
+  <div class="fix top fill pb-nav" data-component="smooth">
+    <div class="s:mb-nav wct" data-inner>
+      <header class="df jcb ph20">
+        <h1 class="serif f126 m:f196 lsn025em">Bag—</h1>
+        <div class="dn s:db pt30">
+          {% include 'mark.njk' %}
+        </div>
+      </header>
+      <div data-component="bag"></div>
+    </div>
   </div>
 </div>
