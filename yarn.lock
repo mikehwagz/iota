@@ -12551,6 +12551,11 @@ slugify@^1.3.6:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/slugify/-/slugify-1.4.0.tgz#c9557c653c54b0c7f7a8e786ef3431add676d2cb"
 
+smitter@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/smitter/-/smitter-0.0.3.tgz#f4b72f4eccb94fa55169bd4046c076de33860528"
+  integrity sha512-XZ8MBFeZIWKZilfv893zpsf+OZKKFlzTl9E1DNGMN/00ZXuRN0p992oSsUDh1Iogug4yVqtlTnQ+T9SCoJzS2A==
+
 snake-case@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/snake-case/-/snake-case-2.1.0.tgz#41bdb1b73f30ec66a04d4e2cad1b76387d4d6d9f"

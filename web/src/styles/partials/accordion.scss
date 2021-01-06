@@ -22,7 +22,7 @@
       margin-bottom: 1em;
     }
 
-    &.is-hidden {
+    &[aria-hidden='true'] {
       max-height: 0 !important;
       visibility: hidden;
     }

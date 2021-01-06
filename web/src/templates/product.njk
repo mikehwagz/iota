@@ -108,7 +108,7 @@ renderData:
                         {% if p.details %}
                           <div class="accordion" data-component="accordion">
                             <div>
-                              <button class="accordion__header pb10 tl df aic js-headers">
+                              <button class="accordion__header pb10 tl df aic" data-squeezebox-header>
                                 <h2 class="sans f28 s:f36 lsn025em ttu mr15">Details</h2>
                                 <div class="accordion__arrow df aic">
                                   <svg width="22" height="23" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -117,8 +117,8 @@ renderData:
                                 </div>
                               </button>
                             </div>
-                            <div class="accordion__panel js-panels">
-                              <div class="accordion__panel-inner js-inners">
+                            <div class="accordion__panel" data-squeezebox-panel>
+                              <div class="accordion__panel-inner" data-squeezebox-panel-inner>
                                 <div class="ls0 serif f18 s:f28">
                                   {{ p.details | blocksToHtml | safe }}
                                 </div>
