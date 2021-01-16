@@ -1,5 +1,5 @@
 import { component } from 'picoapp'
-import { remove, add } from 'martha'
+import { remove, add, size } from 'martha'
 import html from '@/util/html'
 import delegate from '@/util/delegate'
 import centsToPriceNoTrailingZeros from '@/util/centsToPriceNoTrailingZeros'
@@ -22,6 +22,7 @@ export default component((node, ctx) => {
     let li = el.closest('.js-lineItem')
     add(li, 'o65')
     await removeItemFromCheckout(el.dataset.id)
+    ctx.emit('resize', size())
   })
 
   let offIncrementClick = delegate(node, '.js-inc', 'click', async (el) => {
@@ -35,6 +36,7 @@ export default component((node, ctx) => {
     let parent = el.parentNode
     add(parent, 'o65')
     await decrementItemQuantityFromCheckout(el.dataset.id)
+    ctx.emit('resize', size())
     remove(parent, 'o65')
   })
 
@@ -50,7 +52,7 @@ export default component((node, ctx) => {
     if (checkout.lineItems && checkout.lineItems.length) {
       let total = centsToPriceNoTrailingZeros(checkout.totalPrice)
       node.innerHTML = html`
-        <div class="pt35 ph30">
+        <div class="pt35 pb200 ph30">
           <div class="xl:w70">
             <header class="pl20 s:pl30 xl:pl40 mb30 m:mb40">
               <div class="bb bw1 bc-white df">
@@ -191,9 +193,12 @@ export default component((node, ctx) => {
               </div>
             </footer>
           </div>
-          <div class="df jcc xl:db xl:fix right bottom pl25 s:pl0">
+          <div
+            class="bag__checkout-wrap df jcc xl:db xl:fix right pl25 s:pl0"
+            data-fixed
+          >
             <button
-              class="bag__checkout btn btn--inverted serif f55 s:f85 ba bc-white bw1 br50 ph30 pv20 s:pv35 js-checkout"
+              class="bag__checkout btn btn--inverted serif f55 s:f85 ba bc-white bw1 br50 js-checkout"
             >
               Checkout
             </button>
@@ -207,7 +212,7 @@ export default component((node, ctx) => {
             Your bag is empty
           </p>
           <a
-            class="btn btn--inverted serif ba bc-white bw1 br30 ph15 pv5 f28 m:f36 l:f45 js-shop"
+            class="btn btn--inverted serif ba bc-white bw1 br30 f28 m:f36 l:f45 lh120 js-shop"
             href="/"
             >Shop Now</a
           >

@@ -12,13 +12,14 @@ export default component((node, ctx) => {
 
   let inner = qs('[data-inner]', node)
   let stickyEls = qsa('[data-sticky]', node)
+
   // let prlxEls = qsa('[data-prlx]', node)
 
   ctx.on('resize', resize)
   ctx.on('tick', update)
 
-  function resize({ ww }) {
-    if (ww >= 650) {
+  function resize({ ww, wh }) {
+    if (ww >= 850) {
       if (!hasClasses) {
         remove(node, 'oy')
         hasClasses = true
@@ -69,7 +70,7 @@ export default component((node, ctx) => {
     // )
   }
 
-  function update() {
+  function update({ ww }) {
     ty = pageYOffset
 
     cy = rLerp(cy, ty, ease, 100, 0.1)
@@ -88,6 +89,15 @@ export default component((node, ctx) => {
         //   break
         default:
           break
+      }
+    }
+
+    if (ww >= 1200) {
+      let fixedEls = qsa('[data-fixed]', node)
+
+      for (let i = 0; i < fixedEls.length; i++) {
+        let el = fixedEls[i]
+        el.style.transform = translateY(cy)
       }
     }
 

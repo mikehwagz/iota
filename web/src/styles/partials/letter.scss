@@ -1,6 +1,8 @@
 .letter {
   width: 66px;
   height: 66px;
+  // mix-blend-mode: difference;
+  color: $black;
 
   @media (query('s')) {
     width: 105px;

@@ -7,6 +7,15 @@ export default () =>
     .title('Content')
     .items([
       S.listItem()
+        .title('Homepage')
+        .icon(() => <Emoji style={{ fontSize: 30 }} text="🏡" />)
+        .child(
+          S.editor()
+            .title('Homepage')
+            .schemaType('homepage')
+            .documentId('homepage'),
+        ),
+      S.listItem()
         .title('Products')
         .icon(() => <Emoji style={{ fontSize: 30 }} text="📕" />)
         .child(S.documentTypeList('product').title('Products')),

@@ -1,0 +1,7 @@
+.inline-link {
+  font-style: italic;
+
+  &:hover {
+    font-style: normal;
+  }
+}

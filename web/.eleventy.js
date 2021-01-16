@@ -41,7 +41,7 @@ module.exports = function(eleventyConfig) {
             h(
               'a',
               {
-                className: 'bb',
+                className: 'inline-link',
                 href: mark.url,
                 target: '_blank',
                 rel: 'noopener noreferrer',
@@ -52,7 +52,7 @@ module.exports = function(eleventyConfig) {
             h(
               'a',
               {
-                className: 'bb',
+                className: 'inline-link',
                 href: linkResolver({
                   _type: 'internalLink',
                   reference: mark.reference,
@@ -64,7 +64,7 @@ module.exports = function(eleventyConfig) {
             h(
               'a',
               {
-                className: 'bb',
+                className: 'inline-link',
                 'data-router-disabled': true,
                 href: linkResolver({
                   _type: 'emailLink',

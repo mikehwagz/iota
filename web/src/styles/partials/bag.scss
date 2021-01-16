@@ -1,6 +1,17 @@
 .bag {
+  &__checkout-wrap {
+    @media (query('xl')) {
+      top: 62vh;
+    }
+  }
+
   &__checkout {
     transform: rotate(-11deg);
+    padding: 2rem 3rem !important;
+
+    @media (query('s')) {
+      padding: 3.5rem 3rem !important;
+    }
 
     @media (query('xl')) {
       transform: rotate(-31deg);
