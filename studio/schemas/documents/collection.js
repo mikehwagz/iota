@@ -2,6 +2,7 @@ export default {
   title: 'Collection',
   name: 'collection',
   type: 'document',
+  __experimental_actions: ['update', 'publish'],
   fields: [
     {
       title: 'Title',
