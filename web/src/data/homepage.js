@@ -3,6 +3,21 @@ const groq = require('groq')
 
 module.exports = async function() {
   const homepage = await client.fetch(groq`*[_type == 'homepage'][0] {
+    slideshow[] {
+      ...,
+      _type == 'video' => {
+        ...file.asset->,
+        poster {
+          altText,
+          ...image.asset->
+        }
+      },
+      _type == 'a11yImage' => {
+        altText,
+        ...image.asset->
+      }
+    },
+    introText,
     products[]-> {
       'thumbs': content.main.thumbnailHoverSequence[] {
         ...asset->
@@ -63,12 +78,12 @@ module.exports = async function() {
           mediaType,
           mediaType == 'video' => {
             video {
-              ...file.asset->
+              ...file.asset->,
+              poster {
+                altText,
+                ...image.asset->
+              }
             },
-            poster {
-              altText,
-              ...image.asset->
-            }
           },
           mediaType == 'image' => {
             image {
@@ -100,5 +115,5 @@ module.exports = async function() {
     }
   }`)
 
-  return homepage.products
+  return homepage
 }

@@ -176,3 +176,12 @@ a {
     text-indent: 7%;
   }
 }
+
+.hero-carousel-img {
+  width: calc(100vh - 49px - 20rem);
+  height: 100%;
+
+  @media (query('m')) {
+    width: calc(100vh - 66px - 20rem);
+  }
+}

@@ -13,36 +13,106 @@ title: Shop
   </a>
   <div class="bg-white fix top fill pb-nav" data-component="smooth">
     <div class="m:mb-nav wct" data-inner>
-      <div class="m:pl160 pb20 min-vh100">
-        <div class="ph25 xs:ph40 s:ph60 m:ph80 l:ph115 pt125 m:pt80">
-          {% set cls = cycler("odd", "even") %}
-          {% for product in products %}
+      <div class="rel vh100-nav" data-component="slideshow">
+        {% for media in homepage.slideshow %}
+          <div class="{% classNames
+            'abs fill js-slides',
+            'dn' if loop.index0 != 0
+          %}">
+            {% set slideshowLength = homepage.slideshow | length %}
+            {% set nextMedia = homepage.slideshow[0 if loop.index === slideshowLength else loop.index] %}
+            {% if nextMedia._type == 'video' %}
+              <video
+                class="x y o-cover"
+                src="{{ nextMedia.url }}#t=0.1"
+                autoplay
+                playsinline
+                muted
+                loop
+                preload="auto"
+              ></video>
+            {% else %}
+              <img
+                class="x y o-cover"
+                src="{{ nextMedia.url }}"
+                alt="{{ nextMedia.altText }}"
+              >
+            {% endif %}
+            <div class="abs fill df jcc aic pv100">
+              <div class="hero-carousel-img">
+                <div class="r r--1x1">
+                  <div class="ro">
+                    {% if media._type == 'video' %}
+                      <video
+                        class="x y o-cover"
+                        src="{{ media.url }}#t=0.1"
+                        autoplay
+                        playsinline
+                        muted
+                        loop
+                        preload="auto"
+                      ></video>
+                    {% else %}
+                      <img
+                        class="x y o-cover"
+                        src="{{ media.url }}"
+                        alt="{{ media.altText }}"
+                      >
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+        <div class="abs fill-x bottom df jcc aic" style="height: 10rem;">
+          {% for media in homepage.slideshow %}
+            <button
+              class="br50 ba bg-white df aic jcc js-btns"
+              style="width: 4.2rem; height: 4.2rem; margin: 0 0.8rem;"
+              aria-label="Go to slide {{ loop.index }}"
+            >
+              <div class="{% classNames 'js-indicators', 'o0' if loop.index > 1 %}">{% include 'indicator.njk' %}</div>
+            </button>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="ph20">
+        <p class="pt100 pb120 tc max-w1075 mha serif f50 lh110">
+          {{ homepage.introText }}
+        </p>
+        <div class="pl70">
+          {% for product in homepage.products %}
             <a
-              class="{% classNames
-                'db s:w80 m:w80 l:w65 xl:w55 mb50',
-                'mla' if cls.next() == 'even'
-              %}"
+              class="df aic mb60"
               href="/products/{{ product.slug }}"
               data-component="productThumb"
             >
-              <div class="r" style="padding-top: {{ 1 / product.thumbs[0].metadata.dimensions.aspectRatio * 100 }}%">
-                {% for image in product.thumbs %}
-                  <div
-                    class="{% classNames
-                      'ro js-images',
-                      'o0' if not loop.first
-                    %}"
-                  >
-                    <img src="{{ image.url }}" alt="" class="x y o-cover">
-                  </div>
-                {% endfor %}
+              <div class="w55 ph80">
+                <div class="r" style="padding-top: {{ 1 / product.thumbs[0].metadata.dimensions.aspectRatio * 100 }}%">
+                  {% for image in product.thumbs %}
+                    <div
+                      class="{% classNames
+                        'ro js-images',
+                        'o0' if not loop.first
+                      %}"
+                    >
+                      <img src="{{ image.url }}" alt="" class="x y o-cover">
+                    </div>
+                  {% endfor %}
+                </div>
               </div>
-              <h2 class="f18 s:f24 lsn025em tc">
-                {{ product.title }}, {{ product.shopify.defaultPrice | centsToPriceNoTrailingZeros }}
-              </h2>
+              <div class="w45">
+                <h2 class="f45 lh120 lsn025em mb30">
+                  {{ product.title }}<br>
+                  {{ product.subtitle }}
+                </h2>
+                <div class="btn dib serif ba br30">View item</div>
+              </div>
             </a>
           {% endfor %}
         </div>
+        <div class="mt200"></div>
       </div>
       {% include 'footer.njk' %}
     </div>
