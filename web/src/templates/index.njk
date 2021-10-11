@@ -80,17 +80,17 @@ title: Shop
           {% endfor %}
         </div>
       </div>
-      <div class="ph20">
-        <p class="pt100 pb120 tc max-w1075 mha serif f50 lh110">
+      <div class="ph25">
+        <p class="pt50 m:pt75 l:pt100 pb100 l:pb120 tc max-w1075 mha serif f24 s:f28 m:f36 l:f50 lh110">
           {{ homepage.introText }}
         </p>
-        <div class="pl70">
+        <div class="l:pl70">
           {% for product in homepage.products %}
             <div
-              class="df aic mb60"
+              class="m:df aic mb70 l:mb60"
               data-component="productThumb"
             >
-              <div class="w55 ph80">
+              <div class="m:w55 m:ph80 mb30 m:mb0">
                 <div class="r" style="padding-top: {{ 1 / product.thumbs[0].metadata.dimensions.aspectRatio * 100 }}%">
                   {% for image in product.thumbs %}
                     <div
@@ -104,12 +104,12 @@ title: Shop
                   {% endfor %}
                 </div>
               </div>
-              <div class="w45">
-                <h2 class="f45 lh120 lsn025em mb30">
+              <div class="df fc ais m:w45">
+                <h2 class="f28 m:f36 l:f45 lh120 lsn025em mb20 m:mb30">
                   {{ product.title }}<br>
                   {{ product.subtitle }}
                 </h2>
-                <a class="btn dib serif ba br30 js-link" href="/products/{{ product.slug }}/">
+                <a class="btn db serif ba br30 f28 m:f36 l:f45 js-link" href="/products/{{ product.slug }}/">
                   View item
                 </a>
               </div>
