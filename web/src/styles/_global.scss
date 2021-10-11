@@ -179,9 +179,20 @@ a {
 
 .hero-carousel-img {
   width: calc(100vh - 49px - 20rem);
-  height: 100%;
+  height: calc(100vh - 49px - 20rem);
 
   @media (query('m')) {
     width: calc(100vh - 66px - 20rem);
+    height: calc(100vh - 66px - 20rem);
+  }
+}
+
+.hero-carousel-btn {
+  width: 4.2rem;
+  height: 4.2rem;
+  margin: 0 0.6rem;
+
+  @media (query('m')) {
+    margin: 0 0.8rem;
   }
 }

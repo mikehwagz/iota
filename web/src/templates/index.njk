@@ -38,27 +38,29 @@ title: Shop
                 alt="{{ nextMedia.altText }}"
               >
             {% endif %}
-            <div class="abs fill df jcc aic pv100">
-              <div class="hero-carousel-img">
-                <div class="r r--1x1">
-                  <div class="ro">
-                    {% if media._type == 'video' %}
-                      <video
-                        class="x y o-cover"
-                        src="{{ media.url }}#t=0.1"
-                        autoplay
-                        playsinline
-                        muted
-                        loop
-                        preload="auto"
-                      ></video>
-                    {% else %}
-                      <img
-                        class="x y o-cover"
-                        src="{{ media.url }}"
-                        alt="{{ media.altText }}"
-                      >
-                    {% endif %}
+            <div class="abs fill df jcc aic pv100 ph40">
+              <div class="hero-carousel-img df aic">
+                <div class="x">
+                  <div class="r r--1x1">
+                    <div class="ro">
+                      {% if media._type == 'video' %}
+                        <video
+                          class="db x y o-cover"
+                          src="{{ media.url }}#t=0.1"
+                          autoplay
+                          playsinline
+                          muted
+                          loop
+                          preload="auto"
+                        ></video>
+                      {% else %}
+                        <img
+                          class="db x y o-cover"
+                          src="{{ media.url }}"
+                          alt="{{ media.altText }}"
+                        >
+                      {% endif %}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -70,8 +72,7 @@ title: Shop
         <div class="abs fill-x bottom df jcc aic" style="height: 10rem;">
           {% for media in homepage.slideshow %}
             <button
-              class="br50 ba bg-white df aic jcc js-btns"
-              style="width: 4.2rem; height: 4.2rem; margin: 0 0.8rem;"
+              class="hero-carousel-btn br50 ba bg-white df aic jcc js-btns"
               aria-label="Go to slide {{ loop.index }}"
             >
               <div class="{% classNames 'js-indicators', 'o0' if loop.index > 1 %}">{% include 'indicator.njk' %}</div>
@@ -85,9 +86,8 @@ title: Shop
         </p>
         <div class="pl70">
           {% for product in homepage.products %}
-            <a
+            <div
               class="df aic mb60"
-              href="/products/{{ product.slug }}"
               data-component="productThumb"
             >
               <div class="w55 ph80">
@@ -109,9 +109,11 @@ title: Shop
                   {{ product.title }}<br>
                   {{ product.subtitle }}
                 </h2>
-                <div class="btn dib serif ba br30">View item</div>
+                <a class="btn dib serif ba br30 js-link" href="/products/{{ product.slug }}/">
+                  View item
+                </a>
               </div>
-            </a>
+            </div>
           {% endfor %}
         </div>
         <div class="mt200"></div>
