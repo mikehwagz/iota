@@ -1,0 +1,64 @@
+{% macro productHero(
+  product,
+  sticky
+) %}
+  <section
+    class="product-hero x bg-white wct"
+    {% if sticky %}
+      data-sticky-container
+      data-component="productHero"
+    {% endif %}
+  >
+    <div class="rel x vh100-nav">
+      <div
+        class="x y"
+        {% if sticky %}
+          data-sticky
+        {% endif %}
+      >
+        {% if product.hero.landscape.mediaType == 'video' %}
+          <video
+            class="x y o-cover landscape"
+            src="{{ product.hero.landscape.video.url }}#t=0.1"
+            playsinline
+            muted
+            loop
+            preload="auto"
+          ></video>
+        {% else %}
+          <img
+            class="x y o-cover landscape"
+            src="{{ product.hero.landscape.image.url }}"
+            alt="{{ product.hero.landscape.image.altText }}"
+          >
+        {% endif %}
+        {% if product.hero.portrait.mediaType == 'video' %}
+          <video
+            class="x y o-cover portrait"
+            src="{{ product.hero.portrait.video.url }}#t=0.1"
+            autoplay
+            playsinline
+            muted
+            loop
+            preload="auto"
+          ></video>
+        {% else %}
+          <img
+            class="x y o-cover portrait"
+            src="{{ product.hero.portrait.image.url }}"
+            alt="{{ product.hero.portrait.image.altText }}"
+          >
+        {% endif %}
+      </div>
+      <div class="abs fill df jcc aic">
+        <h1
+          class="product-hero__title serif lh087 tc c-white ph25"
+          style="text-shadow: 0px 4px 45px rgba(0, 0, 0, 0.25);"
+        >{{ product.title }}</h1>
+      </div>
+    </div>
+    {% if sticky %}
+      <div class="vh100-nav dn m:db"></div>
+    {% endif %}
+  </section>
+{% endmacro %}

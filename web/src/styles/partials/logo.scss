@@ -1,13 +1,29 @@
 .logo {
-  width: 11rem;
-  height: 11rem;
+  clip-path: inset(0 calc(100vw - 13.2rem) calc(100vh - 49px - 13.2rem) 0);
 
-  @media (query('m')) {
-    width: 16rem;
-    height: 16rem;
+  body.is-pdp & {
+    clip-path: inset(0 calc(100vw - 13.2rem) calc(100vh - 94px - 13.2rem) 0);
   }
 
-  &__letter {
-    width: 3.2rem;
+  @media (query('s')) {
+    clip-path: inset(0 calc(100vw - 21rem) calc(100vh - 49px - 21rem) 0);
+  }
+
+  @media (query('m')) {
+    clip-path: inset(0 calc(100vw - 21rem) calc(100vh - 66px - 21rem) 0);
+  }
+
+  &__letters {
+    width: 13.2rem;
+    height: 13.2rem;
+
+    @media (query('s')) {
+      width: 21rem;
+      height: 21rem;
+    }
+
+    .letter::before {
+      display: none;
+    }
   }
 }

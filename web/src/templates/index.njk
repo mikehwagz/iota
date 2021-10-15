@@ -2,13 +2,27 @@
 layout: base.njk
 title: Shop
 ---
+{% from 'product-hero.macro.njk' import productHero %}
+
 <div class="abs fill" data-router-view="default">
-  <a class="logo db fix bg-red z10" href="/">
-    <div class="rel x y">
-      <div class="logo__letter f28 m:f45 abs top left tc mt20 m:mt25 ml15 m:ml30">I</div>
-      <div class="logo__letter f28 m:f45 abs top right tc mt20 m:mt25 mr15 m:mr30">O</div>
-      <div class="logo__letter f28 m:f45 abs bottom left tc mb20 m:mb25 ml15 m:ml30">T</div>
-      <div class="logo__letter f28 m:f45 abs bottom right tc mb20 m:mb25 mr15 m:mr30">A</div>
+  <a class="logo x vh100-nav db fix z10 bg-red js-logo" href="/">
+    {% for product in homepage.products %}
+      {% set hasLandscape = product.hero.landscape.video.url or product.hero.landscape.image.url %}
+      {% set hasPortrait = product.hero.portrait.video.url or product.hero.portrait.image.url %}
+      {% if hasLandscape and hasPortrait %}
+        <div class="abs fill o0" data-index="{{ loop.index0 }}">
+          {{ productHero(
+            product = product,
+            sticky = false
+          ) }}
+        </div>
+      {% endif %}
+    {% endfor %}
+    <div class="logo__letters rel x y z1">
+      <div class="letter letter--tl f28 s:f45 df jcc aic abs top left z10 usn js-letters">I</div>
+      <div class="letter letter--tr f28 s:f45 df jcc aic abs top right z10 usn js-letters">O</div>
+      <div class="letter letter--bl f28 s:f45 df jcc aic abs bottom left z10 usn js-letters">T</div>
+      <div class="letter letter--br f28 s:f45 df jcc aic abs bottom right z10 usn js-letters">A</div>
     </div>
   </a>
   <div class="bg-white fix top fill pb-nav" data-component="smooth">
@@ -109,7 +123,12 @@ title: Shop
                   {{ product.title }}<br>
                   {{ product.subtitle }}
                 </h2>
-                <a class="btn db serif ba br30 f28 m:f36 l:f45 js-link" href="/products/{{ product.slug }}/">
+                <a
+                  class="btn db serif ba br30 f28 m:f36 l:f45 js-link"
+                  href="/products/{{ product.slug }}/"
+                  data-transition="toDetail"
+                  data-index="{{ loop.index0 }}"
+                >
                   View item
                 </a>
               </div>

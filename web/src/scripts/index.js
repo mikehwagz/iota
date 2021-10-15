@@ -5,6 +5,7 @@ import Base from '@/renderers/Base'
 
 // transitions
 import Instant from '@/transitions/Instant'
+import ToDetail from '@/transitions/ToDetail'
 
 export const router = new Highway.Core({
   renderers: {
@@ -12,5 +13,8 @@ export const router = new Highway.Core({
   },
   transitions: {
     default: Instant,
+    contextual: {
+      toDetail: ToDetail,
+    },
   },
 })

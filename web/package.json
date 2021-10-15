@@ -20,7 +20,7 @@
     "@selfaware/wool": "^1.0.3",
     "choozy": "^0.0.6",
     "fontfaceobserver": "^2.1.0",
-    "gsap": "^3.2.5",
+    "gsap": "^3.8.0",
     "klaviyo-subscribe": "^1.0.0",
     "martha": "^1.0.2",
     "mitt": "^1.2.0",

@@ -25,7 +25,9 @@ class Base extends Highway.Renderer {
     this.mount()
   }
 
-  onEnterCompleted() {}
+  onEnterCompleted() {
+    app.emit('enter:completed')
+  }
 
   onLeave() {
     this.unmount()
