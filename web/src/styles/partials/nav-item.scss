@@ -1,0 +1,11 @@
+.nav-item {
+  &:hover {
+    .nav-item__text {
+      text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.4);
+    }
+
+    .bag-toggle__count {
+      box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.4);
+    }
+  }
+}
