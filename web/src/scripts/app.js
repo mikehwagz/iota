@@ -17,6 +17,7 @@ import bagCount from '@/components/bagCount'
 import accordion from '@/components/accordion'
 import slideshow from '@/components/slideshow'
 import productHero from '@/components/productHero'
+import nav from '@/components/nav'
 
 const components = {
   overlay,
@@ -35,6 +36,7 @@ const components = {
   accordion,
   slideshow,
   productHero,
+  nav,
 }
 
 const state = {

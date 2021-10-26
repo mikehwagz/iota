@@ -3,7 +3,7 @@ import { remove, add, size } from 'martha'
 import html from '@/util/html'
 import delegate from '@/util/delegate'
 import centsToPriceNoTrailingZeros from '@/util/centsToPriceNoTrailingZeros'
-import { router } from '@/index'
+import app from '@/app'
 
 import {
   removeItemFromCheckout,
@@ -42,7 +42,7 @@ export default component((node, ctx) => {
 
   let offShopClick = delegate(node, '.js-shop', 'click', (el, ev) => {
     ev.preventDefault()
-    router.redirect(window.location.origin + el.getAttribute('href'))
+    app.router.redirect(window.location.origin + el.getAttribute('href'))
   })
 
   ctx.on('bag:update', render)

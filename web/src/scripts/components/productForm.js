@@ -6,7 +6,7 @@ import { client, addItemToCheckout, openCheckout } from '@/util/shopify'
 import { encode, decode } from 'shopify-gid'
 import html from '@/util/html'
 import delegate from '@/util/delegate'
-import { router } from '@/index'
+import app from '@/app'
 
 export default component((node, ctx) => {
   let refs = choozy(node)
@@ -80,7 +80,7 @@ export default component((node, ctx) => {
 
   let offBagClick = delegate(document, '.js-bag', 'click', (el, ev) => {
     ev.preventDefault()
-    router.redirect(window.location.origin + el.getAttribute('href'))
+    app.router.redirect(window.location.origin + el.getAttribute('href'))
   })
 
   let offCheckout = delegate(document, '.js-checkout', 'click', () => {
