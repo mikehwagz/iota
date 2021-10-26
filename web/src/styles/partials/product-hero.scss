@@ -1,5 +1,5 @@
 .product-hero {
   &__title {
-    @include fluid(font-size, 650px, 1440px, 85px, 295px);
+    @include fluid(font-size, 650px, 1440px, 85px, 250px);
   }
 }
