@@ -54,7 +54,7 @@ export default component((node, ctx) => {
       node.innerHTML = html`
         <div class="pt35 pb200 ph30">
           <div class="xl:w70">
-            <header class="pl20 s:pl30 xl:pl40 mb30 m:mb40">
+            <header class="pl20 s:pl30 xl:pl40 mb15 m:mb25">
               <div class="bb bw1 bc-white df">
                 <div
                   class="w65 f18 s:f24 m:f28 lsn025em ttu lh100 s:pl15 l:pl25 pb15"
@@ -75,7 +75,7 @@ export default component((node, ctx) => {
                   return html`
                     <li
                       id="${item.id}"
-                      class="line-item df aic mb25 m:mb35 js-lineItem"
+                      class="line-item df aic mb10 m:mb20 js-lineItem"
                     >
                       <button
                         class="line-item__remove l:pr25 xl:pr35 df aic js-remove"
@@ -135,11 +135,13 @@ export default component((node, ctx) => {
                       </button>
                       <div class="df aic w60">
                         <div class="dn l:db w20">
-                          <img
-                            class="x"
-                            src="${item.variant.image.src}"
-                            alt="${item.variant.image.altText}"
-                          />
+                          <div class="rel x" style="padding-top: 100%;">
+                            <img
+                              class="abs fill x y o-contain"
+                              src="${item.variant.image.src}"
+                              alt="${item.variant.image.altText}"
+                            />
+                          </div>
                         </div>
                         <h4
                           class="pl10 s:pl25 xl:pl50 fg1 f18 s:f28 m:f36 l:pv20 lsn025em"

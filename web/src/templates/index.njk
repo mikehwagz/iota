@@ -5,26 +5,24 @@ title: Shop
 {% from 'product-hero.macro.njk' import productHero %}
 
 <div class="abs fill" data-router-view="default">
-  <a class="logo x vh100-nav db fix z10 bg-red js-logo" href="/">
-    {% for product in homepage.products %}
-      {% set hasLandscape = product.hero.landscape.video.url or product.hero.landscape.image.url %}
-      {% set hasPortrait = product.hero.portrait.video.url or product.hero.portrait.image.url %}
-      {% if hasLandscape and hasPortrait %}
+  <div data-pdp>
+    <a class="logo x vh100-nav db fix z10 bg-red js-logo" href="/">
+      {% for product in homepage.products %}
         <div class="abs fill o0" data-index="{{ loop.index0 }}">
           {{ productHero(
             product = product,
             sticky = false
           ) }}
         </div>
-      {% endif %}
-    {% endfor %}
-    <div class="logo__letters rel x y z1">
-      <div class="letter letter--tl f28 s:f45 df jcc aic abs top left z10 usn js-letters">I</div>
-      <div class="letter letter--tr f28 s:f45 df jcc aic abs top right z10 usn js-letters">O</div>
-      <div class="letter letter--bl f28 s:f45 df jcc aic abs bottom left z10 usn js-letters">T</div>
-      <div class="letter letter--br f28 s:f45 df jcc aic abs bottom right z10 usn js-letters">A</div>
-    </div>
-  </a>
+      {% endfor %}
+      <div class="logo__letters rel x y z1">
+        <div class="letter letter--tl f28 s:f45 df jcc aic abs top left z10 usn js-letters">I</div>
+        <div class="letter letter--tr f28 s:f45 df jcc aic abs top right z10 usn js-letters">O</div>
+        <div class="letter letter--bl f28 s:f45 df jcc aic abs bottom left z10 usn js-letters">T</div>
+        <div class="letter letter--br f28 s:f45 df jcc aic abs bottom right z10 usn js-letters">A</div>
+      </div>
+    </a>
+  </div>
   <div class="bg-white fix top fill pb-nav" data-component="smooth">
     <div class="m:mb-nav wct" data-inner>
       <div class="rel vh100-nav" data-component="slideshow">

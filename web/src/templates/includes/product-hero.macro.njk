@@ -16,38 +16,57 @@
           data-sticky
         {% endif %}
       >
-        {% if product.hero.landscape.mediaType == 'video' %}
-          <video
-            class="x y o-cover landscape"
-            src="{{ product.hero.landscape.video.url }}#t=0.1"
-            playsinline
-            muted
-            loop
-            preload="auto"
-          ></video>
-        {% else %}
-          <img
-            class="x y o-cover landscape"
-            src="{{ product.hero.landscape.image.url }}"
-            alt="{{ product.hero.landscape.image.altText }}"
-          >
+        {% set hasLandscapeMedia = product.hero.landscape.video.url or product.hero.landscape.image.url %}
+        {% set hasPortraitMedia = product.hero.portrait.video.url or product.hero.portrait.image.url %}
+
+        {% if hasLandscapeMedia %}
+          {% if product.hero.landscape.mediaType == 'video' %}
+            <video
+              class="{% classNames
+                'x y o-cover',
+                'landscape' if hasPortraitMedia
+              %}"
+              src="{{ product.hero.landscape.video.url }}#t=0.1"
+              playsinline
+              muted
+              loop
+              preload="auto"
+            ></video>
+          {% else %}
+            <img
+              class="{% classNames
+                'x y o-cover',
+                'landscape' if hasPortraitMedia
+              %}"
+              src="{{ product.hero.landscape.image.url }}"
+              alt="{{ product.hero.landscape.image.altText }}"
+            >
+          {% endif %}
         {% endif %}
-        {% if product.hero.portrait.mediaType == 'video' %}
-          <video
-            class="x y o-cover portrait"
-            src="{{ product.hero.portrait.video.url }}#t=0.1"
-            autoplay
-            playsinline
-            muted
-            loop
-            preload="auto"
-          ></video>
-        {% else %}
-          <img
-            class="x y o-cover portrait"
-            src="{{ product.hero.portrait.image.url }}"
-            alt="{{ product.hero.portrait.image.altText }}"
-          >
+
+        {% if hasPortraitMedia %}
+          {% if product.hero.portrait.mediaType == 'video' %}
+            <video
+              class="{% classNames
+                'x y o-cover',
+                'portrait' if hasLandscapeMedia
+              %}"
+              src="{{ product.hero.portrait.video.url }}#t=0.1"
+              playsinline
+              muted
+              loop
+              preload="auto"
+            ></video>
+          {% else %}
+            <img
+              class="{% classNames
+                'x y o-cover',
+                'portrait' if hasLandscapeMedia
+              %}"
+              src="{{ product.hero.portrait.image.url }}"
+              alt="{{ product.hero.portrait.image.altText }}"
+            >
+          {% endif %}
         {% endif %}
       </div>
       <div class="abs fill df jcc aic">

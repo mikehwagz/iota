@@ -35,6 +35,8 @@ export default component((node, ctx) => {
   }
 
   function step() {
+    if (!images?.length) return
+
     images.forEach((image, index) => {
       add(image, 'o0')
 
