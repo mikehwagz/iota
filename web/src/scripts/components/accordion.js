@@ -3,7 +3,7 @@ import squeezebox from '@/lib/squeezebox'
 
 export default component((node, ctx) => {
   const accordion = squeezebox(node, {
-    // defaultIndex: 0,
+    defaultIndex: 0,
     collapsible: true,
     resize: false,
   })
