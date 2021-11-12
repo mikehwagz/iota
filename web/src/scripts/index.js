@@ -7,6 +7,7 @@ import { initCheckout } from '@/util/shopify'
 
 import Instant from '@/transitions/Instant'
 import ToDetail from '@/transitions/ToDetail'
+import ToBag from '@/transitions/ToBag'
 
 class Base extends Highway.Renderer {
   onFirstLoad() {
@@ -72,6 +73,7 @@ app.router = new Highway.Core({
     default: Instant,
     contextual: {
       toDetail: ToDetail,
+      toBag: ToBag,
     },
   },
 })

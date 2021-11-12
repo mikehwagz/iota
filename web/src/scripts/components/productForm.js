@@ -80,7 +80,10 @@ export default component((node, ctx) => {
 
   let offBagClick = delegate(document, '.js-bag', 'click', (el, ev) => {
     ev.preventDefault()
-    app.router.redirect(window.location.origin + el.getAttribute('href'))
+    app.router.redirect(
+      window.location.origin + el.getAttribute('href'),
+      'toBag',
+    )
   })
 
   let offCheckout = delegate(document, '.js-checkout', 'click', () => {
@@ -131,7 +134,12 @@ export default component((node, ctx) => {
         let parent = btn.parentNode
         parent.innerHTML = html`
           Added —
-          <a class="btn btn--text mr5 js-bag" href="/bag">View Bag</a>
+          <a
+            class="btn btn--text mr5 js-bag"
+            href="/bag"
+            data-transition="toBag"
+            >View Bag</a
+          >
         `
       }
     })
