@@ -6,7 +6,9 @@ export default component((node, ctx) => {
 
   if (videos.length) {
     ctx.on('enter:completed', () => {
-      videos.forEach((video) => video.play())
+      requestAnimationFrame(() => {
+        videos.forEach((video) => video.play())
+      })
     })
   }
 })

@@ -21,9 +21,14 @@ body {
 }
 
 body {
-  overscroll-behavior: none;
-  -ms-overflow-style: -ms-autohiding-scrollbar;
   transition: opacity 1s $ease-out-quart;
+  overflow: hidden;
+
+  @media (query('m')) {
+    overscroll-behavior: none;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    overflow: auto;
+  }
 }
 
 ::selection {
@@ -88,44 +93,44 @@ a {
 }
 
 .vh100-nav {
-  height: calc(100vh - 49px);
+  height: calc(var(--vh, 1vh) * 100 - 49px);
 
   body.is-pdp [data-pdp] & {
-    height: calc(100vh - 94px);
+    height: calc(var(--vh, 1vh) * 100 - 94px);
   }
 
   @media (query('m')) {
-    height: calc(100vh - 66px);
+    height: calc(var(--vh, 1vh) * 100 - 66px);
   }
 }
 
 .min-vh100-nav {
-  min-height: calc(100vh - 49px);
+  min-height: calc(var(--vh, 1vh) * 100 - 49px);
 
   body.is-pdp [data-pdp] & {
-    min-height: calc(100vh - 94px);
+    min-height: calc(var(--vh, 1vh) * 100 - 94px);
   }
 
   @media (query('m')) {
-    min-height: calc(100vh - 66px);
+    min-height: calc(var(--vh, 1vh) * 100 - 66px);
   }
 }
 
 @media (query('m')) {
   .m\:vh100-nav {
-    height: calc(100vh - 66px);
+    height: calc(var(--vh, 1vh) * 100 - 66px);
   }
 }
 
 .vh100-nav--2x {
-  height: calc((100vh - 49px) * 2);
+  height: calc((var(--vh, 1vh) * 100 - 49px) * 2);
 
   body.is-pdp [data-pdp] & {
-    height: calc((100vh - 94px) * 2);
+    height: calc((var(--vh, 1vh) * 100 - 94px) * 2);
   }
 
   @media (query('m')) {
-    height: calc((100vh - 66px) * 2);
+    height: calc((var(--vh, 1vh) * 100 - 66px) * 2);
   }
 }
 
@@ -178,12 +183,12 @@ a {
 }
 
 .hero-carousel-img {
-  width: calc(100vh - 49px - 20rem);
-  height: calc(100vh - 49px - 20rem);
+  width: calc(var(--vh, 1vh) * 100 - 49px - 20rem);
+  height: calc(var(--vh, 1vh) * 100 - 49px - 20rem);
 
   @media (query('m')) {
-    width: calc(100vh - 66px - 20rem);
-    height: calc(100vh - 66px - 20rem);
+    width: calc(var(--vh, 1vh) * 100 - 66px - 20rem);
+    height: calc(var(--vh, 1vh) * 100 - 66px - 20rem);
   }
 }
 
@@ -194,5 +199,11 @@ a {
 
   @media (query('m')) {
     margin: 0 0.8rem;
+  }
+}
+
+.hover-fade {
+  &:hover {
+    color: rgba($white, 0.65);
   }
 }

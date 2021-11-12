@@ -5,7 +5,7 @@ import { has, add, remove, index } from 'martha'
 export default component((node, ctx) => {
   const pointerEvents = createPointerEvents({
     target: window,
-    preventDefault: true,
+    preventDefault: false,
   })
 
   ctx.on('resize', ({ ww }) => {

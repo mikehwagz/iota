@@ -4,8 +4,6 @@ import { qsa, rect } from 'martha'
 
 class ToDetail extends Highway.Transition {
   in({ from, to, done }) {
-    window.scrollTo(0, 0)
-
     let tl = gsap.timeline({
       paused: true,
       defaults: {
@@ -13,6 +11,7 @@ class ToDetail extends Highway.Transition {
         duration: 1,
       },
       onComplete() {
+        window.scrollTo(0, 0)
         from.remove()
         done()
       },

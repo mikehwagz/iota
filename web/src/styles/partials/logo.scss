@@ -1,16 +1,24 @@
 .logo {
-  clip-path: inset(0 calc(100vw - 13.2rem) calc(100vh - 49px - 13.2rem) 0);
+  clip-path: inset(
+    0 calc(100vw - 13.2rem) calc(var(--vh, 1vh) * 100 - 49px - 13.2rem) 0
+  );
 
   body.is-pdp & {
-    clip-path: inset(0 calc(100vw - 13.2rem) calc(100vh - 94px - 13.2rem) 0);
+    clip-path: inset(
+      0 calc(100vw - 13.2rem) calc(var(--vh, 1vh) * 100 - 94px - 13.2rem) 0
+    );
   }
 
   @media (query('s')) {
-    clip-path: inset(0 calc(100vw - 21rem) calc(100vh - 49px - 21rem) 0);
+    clip-path: inset(
+      0 calc(100vw - 21rem) calc(var(--vh, 1vh) * 100 - 49px - 21rem) 0
+    );
   }
 
   @media (query('m')) {
-    clip-path: inset(0 calc(100vw - 21rem) calc(100vh - 66px - 21rem) 0);
+    clip-path: inset(
+      0 calc(100vw - 21rem) calc(var(--vh, 1vh) * 100 - 66px - 21rem) 0
+    );
   }
 
   &__letters {

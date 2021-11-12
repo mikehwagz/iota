@@ -1,5 +1,5 @@
 import { component } from 'picoapp'
-import { qs, qsa, add, rect, round, lerp, clamp, remove } from 'martha'
+import { qs, qsa, add, rect, remove } from 'martha'
 import rLerp from '@/util/rLerp'
 
 export default component((node, ctx) => {
@@ -8,7 +8,6 @@ export default component((node, ctx) => {
   let cy = 0
   let ease = 0.15
   let cache = []
-  let hasClasses = true
 
   let inner = qs('[data-inner]', node)
   let stickyEls = qsa('[data-sticky]', node)
@@ -18,23 +17,17 @@ export default component((node, ctx) => {
   ctx.on('resize', resize)
   ctx.on('tick', update)
 
-  function resize({ ww, wh }) {
-    if (ww >= 850) {
-      if (!hasClasses) {
-        remove(node, 'oy')
-        hasClasses = true
-      }
-
+  function resize({ ww }) {
+    if (ww < 850) {
+      document.body.removeAttribute('style')
+      remove(node, 'fix', 'top', 'fill')
+      add(node.parentNode, 'oy')
+    } else {
       sh = rect(inner).height
       document.body.style.height = sh + 'px'
+      add(node, 'fix', 'top', 'fill')
+      remove(node.parentNode, 'oy')
       setCache()
-    } else {
-      if (hasClasses) {
-        add(node, 'oy')
-        hasClasses = false
-      }
-
-      document.body.removeAttribute('style')
     }
   }
 
@@ -71,7 +64,9 @@ export default component((node, ctx) => {
   }
 
   function update({ ww }) {
-    ty = pageYOffset
+    if (ww < 850) return
+
+    ty = window.scrollY
 
     cy = rLerp(cy, ty, ease, 100, 0.1)
 

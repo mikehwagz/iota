@@ -9,18 +9,18 @@ renderData:
   title: "{{ p.title }}"
 ---
 <div class="abs fill" data-router-view="default">
-  <a class="logo db fix bg-red z10" href="/">
-    <div class="rel x y">
-      <div class="logo__letter f28 m:f45 abs top left tc mt20 m:mt25 ml15 m:ml30">I</div>
-      <div class="logo__letter f28 m:f45 abs top right tc mt20 m:mt25 mr15 m:mr30">O</div>
-      <div class="logo__letter f28 m:f45 abs bottom left tc mb20 m:mb25 ml15 m:ml30">T</div>
-      <div class="logo__letter f28 m:f45 abs bottom right tc mb20 m:mb25 mr15 m:mr30">A</div>
+  <a class="logo x vh100-nav db fix z10 bg-red js-logo" href="/">
+    <div class="logo__letters rel x y z1">
+      <div class="letter letter--tl f28 s:f45 df jcc aic abs top left z10 usn js-letters">I</div>
+      <div class="letter letter--tr f28 s:f45 df jcc aic abs top right z10 usn js-letters">O</div>
+      <div class="letter letter--bl f28 s:f45 df jcc aic abs bottom left z10 usn js-letters">T</div>
+      <div class="letter letter--br f28 s:f45 df jcc aic abs bottom right z10 usn js-letters">A</div>
     </div>
   </a>
   <div class="bg-white fix top fill pb-nav" data-component="smooth">
     <div class="m:mb-nav wct" data-inner>
-      <div class="m:pl160 pb20 min-vh100">
-        <div class="ph25 s:ph40 m:ph80 l:ph115 pt165 m:pt115">
+      <div class="m:pl210 pb20 min-vh100">
+        <div class="ph25 s:ph40 m:ph80 l:ph115 pt250 m:pt115">
           {% for section in p.sections %}
             <div id="{{ section.title | slug }}" class="x max-w892">
               <h2 class="f28 s:f35 l:f45 ttu lsn025em mb20">{{ section.title }} +</h2>

@@ -9,7 +9,7 @@
           name="email"
           placeholder="{{ footer.newsletterSignup.placeholderText }}"
         />
-        <button class="f28 m:f35 xl:f45 lsn025em ttu pb20 m:bb m:bc-white" type="submit">
+        <button class="hover-fade f28 m:f35 xl:f45 lsn025em ttu pb20 m:bb m:bc-white" type="submit">
           {{ footer.newsletterSignup.submitButtonText }}
         </button>
       </form>
@@ -23,7 +23,7 @@
       <nav class="df fc l:fr">
         {% for item in footer.menu %}
           {% set link = item %}
-          {% set cx = 'db f28 m:f35 xl:f45 ttu lsn025em mb15 l:mb0 l:mr20 xl:mr40' if not loop.last else 'db f28 m:f35 xl:f45 ttu lsn025em' %}
+          {% set cx = 'hover-fade db f28 m:f35 xl:f45 ttu lsn025em mb15 l:mb0 l:mr20 xl:mr40' if not loop.last else 'hover-fade db f28 m:f35 xl:f45 ttu lsn025em' %}
           {% include 'link.njk' %}
         {% endfor %}
       </nav>
