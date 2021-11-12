@@ -35,10 +35,12 @@
           {% else %}
             <img
               class="{% classNames
-                'x y o-cover',
+                'lazy x y o-cover',
                 'landscape' if hasPortraitMedia
               %}"
-              src="{{ product.hero.landscape.image.url }}"
+              data-component="lazy"
+              src="{{ product.hero.landscape.image.metadata.lqip }}"
+              data-src="{{ product.hero.landscape.image.url }}"
               alt="{{ product.hero.landscape.image.altText }}"
             >
           {% endif %}
@@ -60,10 +62,12 @@
           {% else %}
             <img
               class="{% classNames
-                'x y o-cover',
+                'lazy x y o-cover',
                 'portrait' if hasLandscapeMedia
               %}"
-              src="{{ product.hero.portrait.image.url }}"
+              data-component="lazy"
+              src="{{ product.hero.portrait.image.metadata.lqip }}"
+              data-src="{{ product.hero.portrait.image.url }}"
               alt="{{ product.hero.portrait.image.altText }}"
             >
           {% endif %}

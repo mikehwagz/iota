@@ -93,7 +93,13 @@ renderData:
                   <div class="col-8 on1">
                     {% for image in p.images %}
                       <div class="x vh100-nav oh">
-                        <img src="{{ image.url }}" alt="{{ image.altText }}" class="db x y o-cover">
+                        <img
+                          class="lazy db x y o-cover"
+                          data-component="lazy"
+                          src="{{ image.metadata.lqip }}"
+                          data-src="{{ image.url }}"
+                          alt="{{ image.altText }}"
+                        >
                       </div>
                     {% endfor %}
                   </div>

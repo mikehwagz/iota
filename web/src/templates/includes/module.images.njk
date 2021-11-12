@@ -3,9 +3,11 @@
     <div class="r r--4x5">
       <div class="ro">
         <img
-          src="{{ module.image1.url }}"
+          class="lazy x y o-cover"
+          data-component="lazy"
+          src="{{ module.image1.metadata.lqip }}"
+          data-src="{{ module.image1.url }}"
           alt="{{ module.image1.altText }}"
-          class="x y o-cover"
         >
       </div>
     </div>
@@ -14,9 +16,11 @@
     <div class="r" style="padding-top: {{ 1 / module.image2.metadata.dimensions.aspectRatio * 100 }}%">
       <div class="ro">
         <img
-          src="{{ module.image2.url }}"
+          class="lazy x"
+          data-component="lazy"
+          src="{{ module.image2.metadata.lqip }}"
+          data-src="{{ module.image2.url }}"
           alt="{{ module.image2.altText }}"
-          class="x"
         >
       </div>
     </div>

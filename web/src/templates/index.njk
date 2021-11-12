@@ -45,8 +45,10 @@ title: Shop
               ></video>
             {% else %}
               <img
-                class="x y o-cover"
-                src="{{ nextMedia.url }}"
+                class="lazy x y o-cover"
+                data-component="lazy"
+                src="{{ nextMedia.metadata.lqip }}"
+                data-src="{{ nextMedia.url }}"
                 alt="{{ nextMedia.altText }}"
               >
             {% endif %}
@@ -67,8 +69,10 @@ title: Shop
                         ></video>
                       {% else %}
                         <img
-                          class="db x y o-cover"
-                          src="{{ media.url }}"
+                          class="lazy db x y o-cover"
+                          data-component="lazy"
+                          src="{{ media.metadata.lqip }}"
+                          data-src="{{ media.url }}"
                           alt="{{ media.altText }}"
                         >
                       {% endif %}
@@ -112,7 +116,12 @@ title: Shop
                         'o0' if not loop.first
                       %}"
                     >
-                      <img src="{{ image.url }}" alt="" class="x y o-cover">
+                      <img
+                        class="lazy x y o-cover"
+                        data-component="lazy"
+                        src="{{ image.metadata.lqip }}"
+                        data-src="{{ image.url }}"
+                        alt="">
                     </div>
                   {% endfor %}
                 </div>

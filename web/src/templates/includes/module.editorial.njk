@@ -8,9 +8,11 @@
   </div>
   <div class="col-8 on1">
     <img
-      src="{{ module.image.url }}"
+      class="lazy db x vh100-nav o-cover"
+      data-component="lazy"
+      src="{{ module.image.metadata.lqip }}"
+      data-src="{{ module.image.url }}"
       alt="{{ module.image.altText }}"
-      class="db x vh100-nav o-cover"
       data-sticky
     >
   </div>

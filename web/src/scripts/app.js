@@ -18,6 +18,7 @@ import accordion from '@/components/accordion'
 import slideshow from '@/components/slideshow'
 import productHero from '@/components/productHero'
 import nav from '@/components/nav'
+import lazy from '@/components/lazy'
 
 const components = {
   overlay,
@@ -37,6 +38,7 @@ const components = {
   slideshow,
   productHero,
   nav,
+  lazy,
 }
 
 const state = {

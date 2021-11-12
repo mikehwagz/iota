@@ -2,9 +2,11 @@
   <div class="r oh" style="padding-top: {{ 1 / module.image.metadata.dimensions.aspectRatio * 100 }}%">
     <div class="ro wct">
       <img
-        src="{{ module.image.url }}"
+        class="lazy x"
+        data-component="lazy"
+        src="{{ module.image.metadata.lqip }}"
+        data-src="{{ module.image.url }}"
         alt="{{ module.image.altText }}"
-        class="x"
       >
     </div>
   </div>
