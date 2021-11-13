@@ -134,13 +134,17 @@ export default component((node, ctx) => {
                         </svg>
                       </button>
                       <div class="df aic w60">
-                        <div class="dn l:db w20">
+                        <div class="dn l:db w20 fs0">
                           <div class="rel x" style="padding-top: 100%;">
-                            <img
-                              class="abs fill x y o-contain"
-                              src="${item.variant.image.src}"
-                              alt="${item.variant.image.altText}"
-                            />
+                            ${item?.variant?.image?.src
+                              ? html`
+                                  <img
+                                    class="abs fill x y o-contain"
+                                    src="${item?.variant?.image?.src ?? ''}"
+                                    alt="${item?.variant?.image?.altText ?? ''}"
+                                  />
+                                `
+                              : ``}
                           </div>
                         </div>
                         <h4
