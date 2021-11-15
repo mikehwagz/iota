@@ -1,11 +1,14 @@
 .btn {
   padding: 1px 15px 0px 15px;
 
+  &:not(.btn--text) {
+    padding: 7px 15px 6px 15px;
+  }
+
   &:hover:not(:disabled) {
     font-style: italic;
 
     &:not(.btn--text) {
-      padding: 7px 15px 6px 15px;
       background-color: $black;
       color: $white;
     }
