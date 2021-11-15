@@ -1,5 +1,6 @@
 .product-hero {
   &__title {
+    user-select: none;
     @include fluid(font-size, 650px, 1440px, 85px, 250px);
   }
 }
