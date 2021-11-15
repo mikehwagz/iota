@@ -52,12 +52,12 @@ export default component((node, ctx) => {
     if (checkout.lineItems && checkout.lineItems.length) {
       let total = centsToPriceNoTrailingZeros(checkout.totalPrice)
       node.innerHTML = html`
-        <div class="pt35 pb200 ph30">
-          <div class="xl:w70">
-            <header class="pl20 s:pl30 xl:pl40 mb15 m:mb25">
+        <div class="pt35 pb200 ph20 s:ph30">
+          <div class="x xl:w70">
+            <header class="s:pl30 xl:pl40 mb15 m:mb25">
               <div class="bb bw1 bc-white df">
                 <div
-                  class="w65 f18 s:f24 m:f28 lsn025em ttu lh100 s:pl15 l:pl25 pb15"
+                  class="w70 s:w65 f18 s:f24 m:f28 lsn025em ttu lh100 s:pl15 l:pl25 pb15"
                 >
                   Item
                 </div>
@@ -75,17 +75,17 @@ export default component((node, ctx) => {
                   return html`
                     <li
                       id="${item.id}"
-                      class="line-item df aic mb10 m:mb20 js-lineItem"
+                      class="line-item df aic mb15 m:mb20 js-lineItem"
                     >
                       <button
-                        class="line-item__remove l:pr25 xl:pr35 df aic js-remove"
+                        class="line-item__remove l:pr25 xl:pr35 dn s:df aic js-remove"
                         data-id="${item.id}"
                         aria-label="Remove ${item.quantity > 1
                           ? 'items'
                           : 'item'} from Bag"
                       >
                         <svg
-                          class="dn s:db"
+                          class="db"
                           width="17"
                           height="17"
                           viewBox="0 0 17 17"
@@ -133,7 +133,7 @@ export default component((node, ctx) => {
                           />
                         </svg>
                       </button>
-                      <div class="df aic w60">
+                      <div class="df aic w70 s:w60">
                         <div class="dn l:db w20 fs0">
                           <div class="rel x" style="padding-top: 100%;">
                             ${item?.variant?.image?.src
@@ -148,7 +148,7 @@ export default component((node, ctx) => {
                           </div>
                         </div>
                         <h4
-                          class="pl10 s:pl25 xl:pl50 fg1 f18 s:f28 m:f36 l:pv20 lsn025em"
+                          class="s:pl25 xl:pl50 fg1 f18 s:f28 m:f36 l:pv20 lsn025em"
                         >
                           ${item.title}
                           ${item.variant.title !== 'Default Title'
@@ -186,7 +186,7 @@ export default component((node, ctx) => {
                 })
                 .join('')}
             </ul>
-            <footer class="pl20 s:pl30 xl:pl40 mb40">
+            <footer class="s:pl30 xl:pl40 mb40">
               <div class="bt bw1 bc-white df jcb">
                 <div
                   class="f18 s:f28 m:f36 lsn025em ttu lh100 s:pl15 l:pl25 pt25"
