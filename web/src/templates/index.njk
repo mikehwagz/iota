@@ -6,7 +6,7 @@ title: Shop
 
 <div class="abs fill" data-router-view="default">
   <div data-pdp>
-    <a class="logo x vh100-nav db fix z2 bg-red js-logo" href="/">
+    <div class="logo x vh100-nav db fix z2 bg-red pen js-logo">
       {% for product in homepage.products %}
         <div class="abs fill o0" data-index="{{ loop.index0 }}">
           {{ productHero(
@@ -21,7 +21,7 @@ title: Shop
         <div class="letter letter--bl f28 s:f45 df jcc aic abs bottom left z10 usn js-letters">T</div>
         <div class="letter letter--br f28 s:f45 df jcc aic abs bottom right z10 usn js-letters">A</div>
       </div>
-    </a>
+    </div>
   </div>
   <div class="bg-white fix top fill pb-nav" data-component="smooth">
     <div class="m:mb-nav wct" data-inner>
