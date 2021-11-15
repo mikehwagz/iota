@@ -218,7 +218,7 @@ export default component((node, ctx) => {
             Your bag is empty
           </p>
           <a
-            class="btn btn--inverted serif ba bc-white bw1 br30 f28 m:f36 l:f45 lh120 js-shop"
+            class="btn btn--inverted serif ba bc-white bw1 br-full f28 m:f36 l:f45 lh120 js-shop"
             href="/"
             >Shop Now</a
           >
