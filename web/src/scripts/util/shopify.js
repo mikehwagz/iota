@@ -5,7 +5,7 @@ const SHOPIFY_CHECKOUT_STORAGE_KEY = 'shopify_checkout_id'
 
 export const client = ShopifyBuy.buildClient({
   domain: 'shop.iota-editions.com',
-  storefrontAccessToken: 'b906b8c00a63fd72aac3b15b19c83f7c',
+  storefrontAccessToken: 'c31154779dab9b4c18557c2feb1f3d3d',
 })
 
 export function createNewCheckout() {
