@@ -1,12 +1,17 @@
 import { component } from 'picoapp'
 import choozy from 'choozy'
 import { on, qs, remove, add } from 'martha'
-import centsToPriceNoTrailingZeros from '@/util/centsToPriceNoTrailingZeros'
-import { client, addItemToCheckout, openCheckout } from '@/util/shopify'
-import { encode, decode } from 'shopify-gid'
 import html from '@/util/html'
 import delegate from '@/util/delegate'
 import app from '@/app'
+import {
+  client,
+  addItemToCheckout,
+  openCheckout,
+  encode,
+  decode,
+  formatPrice,
+} from '@/util/shopify'
 
 export default component((node, ctx) => {
   let refs = choozy(node)
@@ -23,7 +28,7 @@ export default component((node, ctx) => {
 
   let productId = node.dataset.id
   let shopifyId = encode('Product', productId, {
-    accessToken: 'b906b8c00a63fd72aac3b15b19c83f7c',
+    accessToken: 'c31154779dab9b4c18557c2feb1f3d3d',
   })
 
   let decodedVariants = []
@@ -147,7 +152,7 @@ export default component((node, ctx) => {
 
   function setVariant() {
     refs.price.forEach((el) => {
-      el.textContent = centsToPriceNoTrailingZeros(selectedVariant.price)
+      el.textContent = formatPrice(selectedVariant.price)
     })
 
     if (selectedVariant.available) {

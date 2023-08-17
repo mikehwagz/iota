@@ -1,5 +1,6 @@
 import ShopifyBuy from 'shopify-buy'
 import app from '@/app'
+import centsToPriceNoTrailingZeros from './centsToPriceNoTrailingZeros'
 
 const SHOPIFY_CHECKOUT_STORAGE_KEY = 'shopify_checkout_id'
 
@@ -120,4 +121,47 @@ export function openCheckout(newTab) {
   } else {
     window.location.href = checkout.webUrl
   }
+}
+
+export function decode(str) {
+  const raw = str.split('shopify/')[1]
+
+  const [type, id] = raw.split('/')
+
+  const params = (id.split('?').slice(1)[0] || '').split('&').reduce((p, q) => {
+    const [key, value] = q.split('=')
+    p[key] = value
+    return p
+  }, {})
+
+  return {
+    type,
+    id: id.split('?')[0],
+    params,
+    raw: str,
+  }
+}
+
+export function encode(type, id, params = {}) {
+  let full = `gid://shopify/${type}/${id}`
+
+  let query = []
+  const keys = Object.keys(params)
+
+  if (keys.length > 0) {
+    for (let i = 0; i < keys.length; i++) {
+      query.push(keys[i] + '=' + params[keys[i]])
+    }
+
+    query = '?' + query.join('&')
+
+    full += query
+  }
+
+  return full
+}
+
+export function formatPrice({ amount }, qty = 1) {
+  const cents = parseInt(amount, 10) * 100
+  return centsToPriceNoTrailingZeros(cents, qty)
 }

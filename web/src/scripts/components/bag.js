@@ -2,7 +2,7 @@ import { component } from 'picoapp'
 import { remove, add, size } from 'martha'
 import html from '@/util/html'
 import delegate from '@/util/delegate'
-import centsToPriceNoTrailingZeros from '@/util/centsToPriceNoTrailingZeros'
+import { formatPrice } from '@/util/shopify'
 import app from '@/app'
 
 import {
@@ -50,7 +50,7 @@ export default component((node, ctx) => {
 
   function render({ checkout }) {
     if (checkout.lineItems && checkout.lineItems.length) {
-      let total = centsToPriceNoTrailingZeros(checkout.totalPrice)
+      let total = formatPrice(checkout.totalPrice)
       node.innerHTML = html`
         <div class="pt35 pb200 ph20 s:ph30">
           <div class="x xl:w70">
@@ -176,10 +176,7 @@ export default component((node, ctx) => {
                         </div>
                       </div>
                       <p class="f18 s:f28 m:f36 lsn025em l:pr20">
-                        ${centsToPriceNoTrailingZeros(
-                          item.variant.price,
-                          item.quantity,
-                        )}
+                        ${formatPrice(item.variant.price, item.quantity)}
                       </p>
                     </li>
                   `
